@@ -19,7 +19,7 @@ export const Checkout = () => {
 
   const [serviceCart , setServiceCart] = useState([]) ;
   const [totalAmount , setTotalAmount] = useState(0);
-  const [finalAmount , setFinalAmount] = useState(0);
+  // const [finalAmount , setFinalAmount] = useState(0);
   const [user , setUser] = useState();
   const [userAddress , setUserAddress] = useState();
   const [todaySlot , setTodaySlot] = useState([]);
