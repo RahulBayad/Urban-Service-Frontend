@@ -1,0 +1,15 @@
+.categoriesBody{
+    /* border: 1px solid red; */
+    padding: 0 90px;
+    /* background: rgb(246, 246, 246); */
+}
+.horizLine{
+    border-top: 1px solid rgb(198, 198, 198);
+}
+.heading1{
+    font-weight: 500;
+    font-size: 30px;
+    padding: 0;
+    /* font-family: "roboto"; */
+}
+

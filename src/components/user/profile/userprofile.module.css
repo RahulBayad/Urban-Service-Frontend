@@ -1,0 +1,107 @@
+.body{
+}
+.profileBody{
+    padding: 20px 200px;
+    background-color: rgba(231, 231, 231, 0.9);
+    /* border: 1px solid red; */
+}
+
+
+.profile{
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    align-items: center;
+}
+
+
+.formcontainer{
+    box-shadow: 0 0 4px rgb(122, 122, 122);
+    background-color: white;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 5px;
+    padding: 20px 60px;
+}
+#heading1{
+    font-weight: 500;
+    color: rgb(148, 26, 255);
+    color: rgb(23, 35, 140);
+    padding: 10px 60px;
+    font-size: 20px;
+    text-align: center;
+}
+.formheading{
+    font-weight: 500;
+    font-size: 17px;
+}
+.horizLine{
+    border-top: 1px solid rgb(206, 206, 206);
+}
+.formInfoTypeContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    
+}
+.rowCols2{
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: 40% 40% ;
+    gap: 15%;
+    /* height: 70px; */
+}
+.rowCols3{
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: 30% 30% auto ;
+    gap: 5%;
+    /* height: 70px; */
+}
+.input{
+    font-size: 14px;
+    font-weight:500;
+    color: rgb(59, 59, 59);
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-rows:auto ;
+    font-family: 'poppins';
+    gap: 8px;
+}
+.input label{
+    /* width: 100px; */
+    vertical-align: middle;
+    margin : auto 0;
+    /* border: 1px solid red; */
+}
+.input input , .input select ,textarea{
+    border: 1px solid rgb(198, 198, 198);
+    outline: none;
+    height: 35px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    /* color: gray; */
+}
+.formcontainer .input select{
+    height: 38px;
+}
+.input textarea{
+    height: auto;
+}
+input[type="submit"]{
+    background-color: blue;
+    color: white;
+    /* font-family: 'roboto'; */
+    padding: 6px 20px;
+    font-size: 13px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    letter-spacing: 0.3px;
+    text-align: center;
+    font-weight: 500;
+}
+
+ textarea:focus, input:focus, .formcontainer select:focus{
+    border: 2px solid rgb(159, 75, 232);
+    box-shadow: 0 0 1px rgb(164, 164, 164);
+}

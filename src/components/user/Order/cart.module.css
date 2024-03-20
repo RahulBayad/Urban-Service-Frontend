@@ -1,0 +1,152 @@
+.CartPageBody{
+    /* border: 1px solid red; */
+    padding: 20px 85px;
+    display: grid;
+    grid-template-columns: auto 400px;
+    gap: 20px;
+    /* background-color: rgb(248, 234, 255) */
+    
+}
+.cart{
+    padding: 5px 5px;
+    /* padding-top: 20px; */
+    overflow:scroll;
+    border-radius: 5px;
+    height: 78vh;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    /* box-shadow: 0 0 5px rgb(241, 160, 255); */
+    overflow :auto;
+}
+
+.h2{
+    font-size: 19px;
+    /* font-weight: 400; */
+    line-height: 40px;
+}
+.service{
+    display: grid;
+    grid-template-columns: auto 170px;
+    gap: 20px;
+    /* border: 1px solid rgb(246, 208, 255); */
+    background-color: white;
+    /* border: 1px solid rgb(223, 223, 223); */
+    padding: 15px 20px ;   
+    border-radius: 5px;
+    /* box-shadow: 0 0 4px rgb(244, 182, 255); */
+    box-shadow:  0 0 4px rgb(183, 183, 183);
+}
+.service ul{
+    padding-left: 20px;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.serviceImgBox{
+    border-radius: 10px;
+    box-sizing: border-box;
+    display:flex;
+    align-items:center;
+    overflow: hidden;
+}
+.serviceImg{
+    border-radius: 10px;
+    width: 150px;
+    height: 150px;
+    transition: 200ms ease;
+    /* border: 1px solid rgb(207, 48, 255); */
+    border: 1px solid rgb(245, 186, 255);
+}
+.serviceImg:hover{
+    height: 155px;
+    width: 155px;
+}
+.service button{
+    border: none;
+    background-color: rgb(255, 255, 255);
+    /* background-color: rgb(253, 247, 255); */
+    /* background-color: none; */
+    color: black;
+    border: 1px solid rgb(192, 192, 192);
+    /* border: 1px solid rgb(200, 60, 255); */
+    /* color:  rgb(200, 60, 255); */
+    width: 25px;
+    border-radius: 3px;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 3px 7px;
+    align-items: center;
+    cursor: pointer;
+}
+.service button:hover{
+    box-shadow: 0 0 2px rgb(182, 182, 182);
+}
+
+.placeOrderContainer{
+    box-shadow:  0 0 4px rgb(183, 183, 183);
+    padding: 20px 25px;
+    grid-template-columns: auto 100px;
+    border-radius: 5px;
+    height: 75vh;
+    background-color: white;
+}
+.placeOrderContainer .Link{
+    display:block ;
+    text-decoration: none;
+    height: 35px;
+    line-height: 35px;
+    width: 100px;
+    text-align: center;
+    color: white;
+    background-color: green;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transform: 100ms ease;
+}
+.Link:hover{
+    box-shadow: 0 0 3px rgb(154, 154, 154);
+    background-color: rgb(0, 96, 0);
+}
+
+.billingTable{
+    /* border: 1px solid rgb(247, 227, 255); */
+    border-collapse: collapse;
+}
+.billingTable th{
+    font-weight: 500;
+    background-color: rgb(210, 112, 255);
+    background-color: rgb(179, 0, 255);
+    /* background-color: rgb(202, 78, 255); */
+    color: white;
+}
+.billingTable tr{
+    border-top: 1px solid rgb(225, 225, 225);
+    padding: 10px 4px;
+    padding-top: 10px;
+}
+.billingTable td{
+    padding: 10px;
+    font-size: 13px;
+}
+.billingTable tr:nth-child(1){
+    padding-left: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    letter-spacing: 0.3px;
+}
+
+
+.billingTable td:nth-child(1){
+    padding-left: 10px;
+}
+.billingTable td:nth-child(2),
+.billingTable td:nth-child(3),
+.billingTable td:nth-child(4){
+    text-align: center;
+
+}

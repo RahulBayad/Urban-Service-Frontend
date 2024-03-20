@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
+.bkgImage{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    /* background-color: red; */
+    background:linear-gradient(to right,black ,white );
+    z-index: -1;    
+}
+.bkgImage .imgBox{
+    position: absolute;
+    height: 90vh;
+    width: 45vw;
+    background-repeat: no-repeat;
+    /* border: 1px solid red; */
+    right:50px;
+    bottom: 0;
+}
+.blackBKG{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0 , 0.8);
+    background-blend-mode: overlay;
+    z-index: 3;
+    transform: scaleY(0%);
+}
+
+.loginBody{
+    font-family: 'roboto';
+    background-size: cover;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+.navbarLogin{
+    background-color: black;
+    padding-top: 5px;
+}
+.container{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 100px;
+    /* border: 1px solid red; */
+}
+.imgFormContainer{
+    /* border: 1px solid red; */
+    box-shadow: 0px 0px 8px rgb(85, 85, 85);
+    overflow: hidden;
+    width: 450px;
+    border-radius: 10px;
+}
+
+.loginFormContainer{  
+    /* border: 1px solid red; */
+    overflow: hidden;
+    background-color: #ffffff;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 0 40px;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.loginFormContainer h1{
+    font-size: 25px;
+    font-weight: 500;
+    text-align: center;
+    font-family:'roboto Slab';
+}
+
+.loginFormContainer .input input{
+    font-family: 'roboto';
+    font-size:13px ;
+    outline: none;
+    box-sizing: border-box;
+    height: 40px;
+    width:100%;
+    border-radius: 4px;
+    border: 1px solid rgb(184, 184, 184);
+    padding-left:10px ;
+}
+.loginForm select{
+    font-size:13px ;
+    color: gray;
+    outline: none;
+    height: 40px;
+    width: 100%;
+    border: 1px solid rgb(184, 184, 184);
+    /* border-color: rgb(184, 184, 184); */
+    border-radius: 4px;
+    padding-left:7px ;
+}
+.loginFormContainer .input input[type="submit"]{
+    background-color: rgb(24, 147, 0);
+    border: none;
+    padding: 0;
+    color: white;
+    height: 38px;
+    font-size: 14px;
+    transition: 50ms ease;
+    cursor: pointer;
+}
+.loginFormContainer .input input[type="submit"]:hover{
+    box-shadow: 0px 0px 3px rgb(46, 46, 112);
+    font-size: 15px;
+    background-color: green;
+}
+.loginFormContainer select:focus{
+    /* color: red; */
+    border: 2px solid rgb(0, 0, 0);
+    /* border-color: black; */
+}
+.loginFormContainer .input input:focus{
+   border: 2px solid black;
+}
+
+
+.signupBtn{
+    background-color: blue;
+    border: none;
+    border-radius: 4px;
+    padding: 0;
+    color: white;
+    height: 38px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 100ms ease;
+    width: 100%;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-family: 'roboto';
+}
+.signupBtn:hover{
+    background-color: rgb(0, 0, 141);
+    font-size: 15px;
+    box-shadow:0px 0px 3px rgb(37, 37, 37);
+}
+
+.registerBox{
+    /* border: 2px solid red; */
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position:absolute;
+    /* top: 25vh; */
+    top: 0vh;
+    /* left: 27vw; */
+    /* width: 450px; */
+    text-align: center;
+    transform : scaleX(0%);
+    transition: 100ms ease;
+    box-sizing:border-box;
+    /* padding: 200px 530px; */
+    z-index: 4;
+}  
+.wrapSubRegister{
+    margin: 0 auto;
+    width: 500px;
+    display: block;
+    /* border: 1px solid red; */
+    margin-top: 150px;
+}
+.cancel{
+    box-shadow: 0px 0px 6px rgb(0, 0, 0);
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 50%;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    float: right;
+    cursor: pointer;
+}
+.subRegisterBox{
+    padding: 40px 70px;   
+    box-shadow: 0px 0px 10px rgb(32, 32, 32);
+    background-color: white;
+    border-radius: 10px ;
+    /* width: 450px; */
+}
+.selectType{
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+    margin: 0 auto;
+    /* gap: 50%; */
+    background-color: white;
+    /* border: 1px solid black;    */
+}
+.typeBox{
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid rgb(191, 191, 191);
+}
+
+.link{
+    text-decoration: none;
+    color: black;
+}
+
+.typeBox div{  
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 30px;
+}
+.typeBox .selectUser,
+.typeBox .selectServiceProvider{
+    padding-top:8px;
+    background-color: rgb(228, 228, 255);
+}
+
+.typeBox:hover{
+    box-shadow: 0 0 5px rgb(156, 156, 156);
+}
+
+@media screen and (max-width:531px) {
+    .imgFormContainer{
+        padding: 200px 50px;
+        width: auto;
+    }
+    .loginFormContainer{
+        padding: 0px 30px;
+    }
+    .container{
+        padding: 0px;
+    }
+    .bkgImage .imgBox{
+        height: 50%;
+    }
+    .registerBox{
+        padding: 50px 50px;
+    }
+    .wrapSubRegister{
+        width: auto;
+    }
+    .subRegisterBox{
+        padding: 30px 30px;
+    }
+    .selectType{
+        /* gap: 10%; */
+    }
+    .typeBox img{
+        height: 60px;
+    }
+    .typeBox .selectUser{
+        border-radius: 50%;
+        padding: 10px 13px;
+        background-color: rgb(228, 228, 255);
+    }
+    .typeBox .selectServiceProvider{
+        padding: 10px 10px;
+    }
+}
+@media screen and (max-width:330px){
+    .registerBox{
+        padding: 100px 20px;
+    }
+}
+@media screen and (max-width:1550px) and (min-width:1000px){
+    /* .registerBox{
+        padding: 100px 500px;
+    }
+    .subRegisterBox{
+        padding: 0px 0px;
+    } */
+}

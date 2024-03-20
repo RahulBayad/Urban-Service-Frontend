@@ -1,0 +1,282 @@
+.CheckoutBody{
+    /* border: 1px solid black; */
+    padding: 10px 125px;
+    display: grid;
+    grid-template-columns: auto 400px;
+    gap: 30px;
+}
+.h1{
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(52, 52, 52);
+    letter-spacing: 0.3px;
+    line-height: 45px;
+}
+.h2{
+    font-size: 19px;
+    font-weight: 500;
+    color: rgb(52, 52, 52);
+    letter-spacing: 0.3px;
+    line-height: 30px;
+}
+.h3{
+    font-size:15px;
+    line-height:60px;
+    font-weight:500;
+    color:gray;
+}
+.hr{
+    /* border-top: 1px solid rgb(213, 135, 255); */
+    border-top: 1px solid rgb(209, 209, 209);
+}
+.addressContainer{
+    /* border: 1px solid rgb(233, 167, 255); */
+    box-shadow:  0 0 4px rgb(183, 183, 183);
+    background-color: white;
+    padding: 10px 19px;
+}
+.innerAddressContainer{
+    box-shadow:none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* border: 1px solid rgb(225, 225, 225); */
+}
+.address{
+    display:grid;
+    grid-template-columns:30px auto 100px;
+    gap:20px;
+    border-radius: 5px;
+    padding: 7px 0;
+    box-shadow: 0 0 2px rgb(188, 188, 188);
+    /* background-color: yellow; */
+}
+.radio{
+    display: flex;
+    padding-left: 10px;
+    /* border: 1px solid red; */
+    justify-content: center;
+}
+.actionIcons{
+    /* border: 1px solid black; */
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.actionIcons img{
+    cursor: pointer;
+}
+.addNameAddressContainer{
+    position: absolute;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    z-index: 3;
+    background-color: rgb(0, 0, 0,0.7);
+    background-blend-mode: overlay;
+    border: 1px solid black;
+    display: none;
+    /* transition:  ease; */
+}
+.addNameAddress{
+    border: 1px solid black;
+    width: 35%; 
+    margin: 0 auto;
+    background-color: white;
+    position: relative;
+    top: 55px;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 100ms ease-in;
+    /* justify-content: center; */
+    /* top: 90px; */
+}
+.addressForm{
+    /* border: 1px solid black; */
+    padding: 30px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+}
+.cols2{
+    display: grid;
+    grid-template-columns: 30% 30% ;
+    gap: 5%;
+}
+.addNameAddress select,
+.addNameAddress input{
+    height: 40px;
+    width: 100%;
+    border-radius: 3px;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    padding-left: 15px;
+    font-family: 'roboto';
+    color: rgb(61, 61, 61);
+    border: 1px solid rgb(222, 137, 255);
+    border: 1px solid rgb(180, 180, 180);
+}
+.addNameAddress textarea{
+    padding-left: 15px;
+    font-family: 'roboto';
+    height: 70px;
+    color: rgb(61, 61, 61);
+    box-sizing: border-box;
+    padding-top: 2px;
+    border: 1px solid rgb(180, 180, 180);
+    /* border: 1px solid rgb(222, 137, 255); */
+    width: 100%;;
+}
+.addNameAddress button{
+    height: 38px;
+    font-weight: 600;
+    background-color: green;
+    color: white;
+    border-radius: 3px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+.addNameAddress button:hover{
+    background-color: rgb(0, 102, 0);
+}
+
+.addNameAddress input:focus{
+    /* border: 2px solid rgb(225, 135, 255); */
+    border: 2px solid rgb(159, 75, 232);
+}
+
+.slotContainer{
+    /* border: 1px solid black; */
+    padding: 20px 30px;
+    padding-top: 0px;
+    background-color: white;
+    box-shadow:  0 0 4px rgb(183, 183, 183);
+}
+.slot label{
+    font-size: 14px;
+    border-radius: 3px;
+    border: 1px solid rgb(180, 180, 180);
+    display: block;
+    padding: 8px 10px;
+    width: 80px;
+    /* height: 40px; */
+    color: gray;
+    text-align: center;
+}
+.slot input[type="radio"]:checked + label{
+    border: 1px solid rgb(170, 0, 255);
+    color: rgb(170, 0, 255); 
+}
+.dateHeadings{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    transition: 100ms ease;
+}
+.dateHeadings .h3{
+    color: rgb(50, 50, 50);
+}
+.todayBox{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.tomorrowBox{
+    display:flex;
+    display: none;
+    padding-top: 0;
+    flex-wrap:wrap;
+    gap:30px;
+}
+.paymentContainer{
+    padding: 20px;
+    box-shadow:  0 0 4px rgb(183, 183, 183);
+}
+.paymentContainer .input{
+    display: grid;
+    /* grid-template-columns: 30px auto; */
+    /* border: 1px solid black; */
+    grid-template-columns:30px auto 100px
+}
+.paymentContainer label{
+    display: block;
+}
+.paymentContainer .input input[type="radio"]{
+    margin-bottom: 28px;
+    display: block;
+    width: 13px;
+}
+.addCard{
+    display: none;
+}
+
+
+.placeOrderContainer{
+    box-shadow:  0 0 4px rgb(183, 183, 183);
+    padding: 20px 25px;
+    grid-template-columns: auto 100px;
+    border-radius: 5px;
+    margin-top: 44px;
+    height: 70vh;
+    background-color: white;
+}
+.placeOrderContainer .Link{
+    display:block ;
+    text-decoration: none;
+    height: 35px;
+    line-height: 35px;
+    width: 100px;
+    text-align: center;
+    color: white;
+    background-color: green;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transform: 100ms ease;
+}
+.Link:hover{
+    box-shadow: 0 0 3px rgb(154, 154, 154);
+    background-color: rgb(0, 96, 0);
+}
+
+.billingTable{
+    /* border: 1px solid rgb(247, 227, 255); */
+    border-collapse: collapse;
+}
+.billingTable th{
+    font-weight: 500;
+    background-color: rgb(0, 153, 255);
+    /* background-color: rgb(170, 0, 255); */
+    /* background-color: rgb(202, 78, 255); */
+    color: white;
+}
+.billingTable tr{
+    border-top: 1px solid rgb(225, 225, 225);
+    padding: 10px 4px;
+    padding-top: 10px;
+}
+.billingTable td{
+    padding: 10px;
+    font-size: 13px;
+}
+.billingTable tr:nth-child(1){
+    padding-left: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    letter-spacing: 0.3px;
+}
+.billingTable td:nth-child(1){
+    padding-left: 10px;
+}
+.billingTable td:nth-child(2),
+.billingTable td:nth-child(3),
+.billingTable td:nth-child(4){
+    text-align: center;
+}
