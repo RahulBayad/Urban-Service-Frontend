@@ -10,7 +10,7 @@ import stressRelief from './../../images/Spa for women/stressRelief.jpg'
 export const WomenSpa = () => {
   return (
     <div>
-         <h2 className={css.heading2}>Massage for Men</h2>
+         <h2 className={css.heading2}>Spa for Women</h2>
         <div className={css.categoryContainer} id='categoryContainer'>
 
           <Link to='/user/services/womenSpa/stressrelief' className={css.category} id='category'>

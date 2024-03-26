@@ -37,6 +37,7 @@ export const ServProSignup = () => {
                 reqObj.append('email',data.email)
                 reqObj.append('phone',data.phone)
                 reqObj.append('country',data.country)
+                reqObj.append('area',data.area)
                 reqObj.append('street',data.street)
                 reqObj.append('city',data.city)
                 reqObj.append('state',data.state)
@@ -50,7 +51,7 @@ export const ServProSignup = () => {
                 reqObj.append('password',data.password)
                 reqObj.append("profilePictureUrl",data.profilePictureUrl[0]);
             }
-            const res = await axios.post("http://localhost:4001/serviceprovider/serviceprovider",reqObj)
+            const res = await axios.post("/serviceprovider/serviceprovider",reqObj)
             // console.log("res",res.response.data.data);
             console.log("Registration successful",res.data);
             toast.success(`${res.data.data}`,{position:"top-center",theme:'colored'});
@@ -192,12 +193,19 @@ export const ServProSignup = () => {
                             </div>
                             
                         </div>
-                        <div className={css.rowCols3}>
+                        <div className={css.rowCols2}>
+                            <div className={css.input}>
+                                <label htmlFor="area" >Area</label>
+                                <input type="text"  {...register('area')}/>
+                                <span id='area'></span>
+                            </div>
                             <div className={css.input}>
                                 <label htmlFor="city" >City</label>
                                 <input type="text"  {...register('city')}/>
                                 <span id='city'></span>
                             </div>
+                        </div>
+                        <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="state" >State</label>
                                 <input type="text"  {...register('state')}/>
@@ -240,7 +248,7 @@ export const ServProSignup = () => {
                                 <select  {...register('qualification')}>
                                     <option value="select" selected disabled></option>
                                     <option value="10th Pass">10th Pass</option>
-                                    <option value="10th Pass">12th Pass</option>
+                                    <option value="12th Pass">12th Pass</option>
                                     <option value="Graduate">Graduate</option>
                                     <option value="Post-gradute">Post-gradute</option>
                                 </select>

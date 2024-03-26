@@ -14,13 +14,17 @@ export const UserProfile = () => {
   const {register , handleSubmit} = useForm();
 
   const submitHandler = async (updatedData)=>{
-    let arr = ['city','country','state','pincode','fname','lname','phone'];
+    if(updatedData.phone.length != 10){return toast.error("Phone number is not valid",{position:"top-center"})}
+    let arr = ['area','city','country','state','pincode','fname','lname','phone'];
+    updatedData.index = 0
     for(let key in updatedData){
       if (updatedData[key] === '' || updatedData[key] === undefined ) {
         if(arr.includes(key)){
-          updatedData[key] = user.address[key];
+          updatedData[key] = user.address[0][key];
+          console.log("changing value is",key ,"and",updatedData[key])
         }else{
           updatedData[key] = user[key];
+          console.log("changing value is",key ,"and",updatedData[key])
         }
       }
     }
@@ -147,12 +151,20 @@ export const UserProfile = () => {
                             </div>
                             
                         </div>
-                        <div className={css.rowCols3}>
+                        
+                        <div className={css.rowCols2}>
+                            <div className={css.input}>
+                                <label htmlFor="area" >Area</label>
+                                <input type="text" defaultValue={user?.address[0]?.area} required {...register('area')}/>
+                                <span id='area'></span>
+                            </div>
                             <div className={css.input}>
                                 <label htmlFor="city" >City</label>
                                 <input type="text" defaultValue={user?.address[0]?.city} required {...register('city')}/>
                                 <span id='city'></span>
                             </div>
+                        </div>
+                        <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="state" >State</label>
                                 <input type="text" defaultValue={user?.address[0]?.state} required {...register('state')}/>

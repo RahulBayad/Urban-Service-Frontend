@@ -28,7 +28,7 @@ export  const UserServices =  () => {
         service.qty = qty;
         let body = {service : service , index : index}
         if(qty >0){
-          let increase = await axios.put(`http://localhost:4001/user/cart/${sessionStorage.getItem('userEmail')}`,body);
+          let increase = await axios.put(`/user/cart/${sessionStorage.getItem('userEmail')}`,body);
           if(increase.data.data.acknowledged === true){
             const updatedQtyCart = [...serviceCart];
             updatedQtyCart[index].qty = qty;
@@ -40,7 +40,7 @@ export  const UserServices =  () => {
           console.log("called and qty is",qty) 
           console.log("called and index is",index) 
           let obj = {index : index}
-          let removeFromCart = await axios.delete(`http://localhost:4001/user/cart/${sessionStorage.getItem('userEmail')}`,{
+          let removeFromCart = await axios.delete(`/user/cart/${sessionStorage.getItem('userEmail')}`,{
             data : {
               index : index
             }

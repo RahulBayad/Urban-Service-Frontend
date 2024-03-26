@@ -14,7 +14,7 @@ export const Cart = () => {
           service.qty = qty;
           let body = {service : service , index : index}
           if(qty >0){
-            let increase = await axios.put(`http://localhost:4001/user/cart/${sessionStorage.getItem('userEmail')}`,body);
+            let increase = await axios.put(`/user/cart/${sessionStorage.getItem('userEmail')}`,body);
             if(increase.data.data.acknowledged === true){
               const updatedQtyCart = [...serviceCart];
               updatedQtyCart[index].qty = qty;
@@ -27,7 +27,7 @@ export const Cart = () => {
             console.log("called and qty is",qty) 
             console.log("called and index is",index) 
             let obj = {index : index}
-            let removeFromCart = await axios.delete(`http://localhost:4001/user/cart/${sessionStorage.getItem('userEmail')}`,{
+            let removeFromCart = await axios.delete(`/user/cart/${sessionStorage.getItem('userEmail')}`,{
               data : {
                 index : index
               }
@@ -119,7 +119,7 @@ export const Cart = () => {
                     }
                 </div>
                 <div className={css.placeOrderContainer}>
-                  <div style={{overflow:"auto",height:"450px"}}>
+                  <div style={{overflow:"auto",height:"300px"}}>
                 {
                   serviceCart.length > 0 ?
                   <table className={css.billingTable} border='0px'>
@@ -168,8 +168,7 @@ export const Cart = () => {
                 : <h3>Cart is Empty</h3>
                 }
                   </div>
-                  <br />
-                  <br />
+                  
                   <div style={{display:"grid",gridTemplateColumns:"auto 100px"}}>
 
                     <div style={{lineHeight:"35px",fontWeight:"500",fontSize:"13px",paddingLeft:"8px"}}>&nbsp;Final Amount ₹ {totalAmount - totalAmount/10}</div>

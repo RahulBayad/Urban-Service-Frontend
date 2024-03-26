@@ -87,13 +87,13 @@
 .placeOrderContainer{
     box-shadow:  0 0 4px rgb(183, 183, 183);
     padding: 20px 25px;
-    grid-template-columns: auto 100px;
     border-radius: 5px;
     height: 75vh;
     background-color: white;
+    display:grid;
+    grid-template-rows: auto 50px;
 }
 .placeOrderContainer .Link{
-    display:block ;
     text-decoration: none;
     height: 35px;
     line-height: 35px;
@@ -115,6 +115,7 @@
 .billingTable{
     /* border: 1px solid rgb(247, 227, 255); */
     border-collapse: collapse;
+    width: 100%;
 }
 .billingTable th{
     font-weight: 500;

@@ -19,6 +19,7 @@ import { Error404 } from './components/validations/Error404.jsx';
 import { SearchService } from './components/user/searchService/SearchService.jsx';
 import { Cart } from './components/user/Order/Cart.jsx';
 import { Checkout } from './components/user/Order/Checkout.jsx';
+import axios from 'axios';
 
 
 
@@ -32,6 +33,8 @@ function  App() {
     }
   }
 
+  axios.defaults.baseURL = "http://localhost:4001"
+  // axios.defaults.baseURL = "https://urban-service-backend-6wmj.onrender.com";
 
   useEffect(() => {
     // const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem("isLoggedIn"));

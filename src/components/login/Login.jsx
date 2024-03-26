@@ -34,7 +34,8 @@ export const Login = () => {
         password:data.password
       }
           if(data.role == "65ce45bddb522781cc3c0c9a"){
-            let userLogin = await axios.post("http://localhost:4001/user/login",formData)
+            // let userLogin = await axios.post("http://localhost:4001/user/login",formData)
+            let userLogin = await axios.post("/user/login",formData)
             toast.success("Login success",{position:"top-center",theme:"colored"});
             sessionStorage.setItem("userEmail",data.email);
             sessionStorage.setItem("isLoggedIn" , "true");
@@ -45,7 +46,8 @@ export const Login = () => {
           }
           if(data.role == "65ce45cfdb522781cc3c0c9c"){
             
-            let serProLogin = await axios.post("http://localhost:4001/serviceprovider/login",formData)
+            // let serProLogin = await axios.post("http://localhost:4001/serviceprovider/login",formData)
+            let serProLogin = await axios.post("/serviceprovider/login",formData)
             toast.success("Login success",{position:"top-center",theme:"colored"});
             sessionStorage.setItem("servProEmail",data.email);
             sessionStorage.setItem("isLoggedIn" , true);

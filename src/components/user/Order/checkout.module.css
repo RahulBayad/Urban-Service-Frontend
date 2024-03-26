@@ -1,8 +1,8 @@
 .CheckoutBody{
     /* border: 1px solid black; */
-    padding: 10px 125px;
+    padding: 10px 200px;
     display: grid;
-    grid-template-columns: auto 400px;
+    grid-template-columns: auto 350px;
     gap: 30px;
 }
 .h1{
@@ -158,14 +158,26 @@
     background-color: white;
     box-shadow:  0 0 4px rgb(183, 183, 183);
 }
+.slot{
+    display: flex;
+}
+.slot input[type="radio"]{
+    position: relative;
+    outline: none;
+    border: none;
+    opacity: 0;
+    left: 50px;
+}
+
 .slot label{
+    border: 1px solid rgb(180, 180, 180);
     font-size: 14px;
     border-radius: 3px;
-    border: 1px solid rgb(180, 180, 180);
     display: block;
-    padding: 8px 10px;
+    padding: 8px 5px;
     width: 80px;
     /* height: 40px; */
+    /* padding-right: 15px; */
     color: gray;
     text-align: center;
 }
@@ -196,36 +208,94 @@
 .paymentContainer{
     padding: 20px;
     box-shadow:  0 0 4px rgb(183, 183, 183);
+    background-color: white;
+}
+.paymentContainer .addCard{
+    box-shadow: 0 0 3px rgb(184, 184, 184);
+    background-color: white;
+    padding: 15px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+}
+.paymentContainer .addCard input{
+    width: 250px;
+}
+.paymentContainer .addCard select{
+    min-width: 125px;
 }
 .paymentContainer .input{
     display: grid;
-    /* grid-template-columns: 30px auto; */
-    /* border: 1px solid black; */
-    grid-template-columns:30px auto 100px
+    padding: 13px 10px;
+    grid-template-columns:40px auto 100px;
+    border-radius: 5px;
 }
 .paymentContainer label{
     display: block;
 }
 .paymentContainer .input input[type="radio"]{
-    margin-bottom: 28px;
+    height: 18px;
     display: block;
     width: 13px;
 }
-.addCard{
+
+.paymentContainer .input input:focus{
+    border: 2px solid black;
+    border-radius: 3px;
+}
+.paymentContainer .upiVerify{
+    margin-top: 8px;
     display: none;
 }
+.paymentContainer .input input{
+    outline: none;
+    font-family: "roboto";
+    height: 20px;
+    padding-left: 5px;
+}
+.paymentContainer .input button{
+    border: none;
+    background-color: blueviolet;
+    padding: 5px 9px;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: "roboto";
+}
+.placeOrderButton{
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    width: 100%;
+    border: none;
+    font-size: 14px;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+.placeOrderButton:hover{
+    background-color: darkgreen;
+}
 
 
-.placeOrderContainer{
+
+.billingContainer{
+    position: sticky;
+    top: 100px;
+    /* box-sizing: ; */
     box-shadow:  0 0 4px rgb(183, 183, 183);
     padding: 20px 25px;
-    grid-template-columns: auto 100px;
     border-radius: 5px;
     margin-top: 44px;
-    height: 70vh;
+    overflow: auto;
+    height: 60vh;
     background-color: white;
 }
-.placeOrderContainer .Link{
+.billingContainer .Link{
     display:block ;
     text-decoration: none;
     height: 35px;

@@ -19,7 +19,9 @@ export const AddService = () => {
     let selectvalue = selectTag.options[selectTag.selectedIndex].value;
 
     try{
-      const res = await axios.get("http://localhost:4001/subcategory/subcategory/"+selectvalue);
+
+      console.log("cat value is",selectvalue);
+      const res = await axios.get("/subcategory/subcategory/"+selectvalue);
       console.log(res);
       setsubcategories(res.data.data);
       console.log(subcategories);
@@ -34,7 +36,7 @@ export const AddService = () => {
 
   const loadCategories = async ()=>{
     try{
-      const res = await axios.get("http://localhost:4001/category/category");
+      const res = await axios.get("/category/category");
       console.log(res.data.data);
       setCategories(res.data.data);
     }catch(err){
@@ -85,7 +87,7 @@ export const AddService = () => {
                 {
                   categories.map((category)=>{
                     return (
-                      <option value={category._id}>{category.name}</option>
+                      <option value={category._id} >{category.name}</option>
                     )
                   })
                 }

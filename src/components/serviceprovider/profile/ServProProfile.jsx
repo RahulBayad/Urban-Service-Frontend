@@ -12,10 +12,45 @@ const formValidation = require('./editProfileScripts');
 export const ServProProfile = () => {
 
   const [imgIcon , setImgIcon] = useState(uploadIcon);
+  const [servProData , setServProData] = useState();
   const {register , handleSubmit} = useForm();
   const navigate = useNavigate();
   
-  
+  const country = ['India','Nepal']
+  const gender = ['Male','Female','Other']
+  const maritalStatus = ['Married','Unmarried','Widowed']
+  const qualification = ["10th Pass","12th Pass",'Graduate','Post-gradute'];
+
+  const printGender = (genderVal)=>{
+    return gender.map((gender)=>{
+        if(gender != genderVal){
+            console.log("gender is",gender)
+            return (<option value={gender}>{gender}</option>)
+        }
+    })
+  }
+  const printCountry = (countryVal)=>{
+    return country.map((country)=>{
+        if(country != countryVal){
+            return (<option value={country}>{country}</option>)
+        }
+    })
+  }
+  const printMaritalStatus = (maritalStatusVal)=>{
+    return maritalStatus.map((maritalStatus)=>{
+        if(maritalStatus != maritalStatusVal){
+            return (<option value={maritalStatus}>{maritalStatus}</option>)
+        }
+    })
+  }
+  const printQualification = (qualificationVal)=>{
+    return qualification.map((qualification)=>{
+        if(qualification != qualificationVal){
+            return (<option value={qualification}>{qualification}</option>)
+        }
+    })
+  }
+
   const submitHandler = async (data) =>{
       
       console.log(data)
@@ -36,6 +71,7 @@ export const ServProProfile = () => {
               reqObj.append('phone',data.phone)
               reqObj.append('country',data.country)
               reqObj.append('street',data.street)
+              reqObj.append('area',data.area)
               reqObj.append('city',data.city)
               reqObj.append('state',data.state)
               reqObj.append('pincode',data.pincode)
@@ -48,7 +84,7 @@ export const ServProProfile = () => {
               reqObj.append('password',data.password)
               reqObj.append("profilePictureUrl",data.profilePictureUrl[0]);
           }
-          const res = await axios.update("http://localhost:4001/serviceprovider/serviceprovider",reqObj)
+          const res = await axios.update("/serviceprovider/serviceprovider",reqObj)
           // console.log("res",res.response.data.data);
           console.log("Registration successful",res.data);
           toast.success(`${res.data.data}`,{position:"top-center",theme:'colored'});
@@ -74,6 +110,15 @@ export const ServProProfile = () => {
           console.log("error is...",err);
       }
   }
+
+  const getServPro = async()=>{
+    try {
+        let response = await axios.get(`/serviceprovider/serviceprovider/${sessionStorage.getItem('servProEmail')}`)
+        setServProData(response.data.data);
+    } catch (error) {
+        console.log("error",error)
+    }
+  }
  
   useEffect(()=>{
       console.log("use effect");
@@ -95,7 +140,7 @@ export const ServProProfile = () => {
               imgMessage.textContent = "Image Dropped";
           })
       }
-          
+       getServPro();   
   },[]);
 
   return (
@@ -116,30 +161,28 @@ export const ServProProfile = () => {
                         <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="fname">First Name</label>
-                                <input type="text" {...register('fname')}/>
+                                <input type="text" defaultValue={servProData?.fname} {...register('fname')}/>
                                 <span id='fname'></span>
                             </div>
                             <div className={css.input}>
                                 <label htmlFor="lname">Last Name</label>
-                                <input type="text" {...register('lname')} />
+                                <input type="text" defaultValue={servProData?.lname} {...register('lname')} />
                                 <span id='lname'></span>
                             </div>
                         </div>
                         <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="dob">Date of Birth</label>
-                                <input type="date"  {...register('dob')} />
+                                <input type="date" defaultValue={servProData?.dob} {...register('dob')} />
                                 <span id='dob'></span>
                             </div>
                         </div>
                         <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="gender">Gender</label>
-                                <select name=""  {...register('gender')}>
-                                    <option value="select" selected disabled> </option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
+                                <select name="" defaultValue={servProData?.gender} {...register('gender')}>
+                                    <option value={servProData?.gender}>{servProData?.gender}</option>
+                                    {printGender(servProData?.gender)}
                                 </select>
                                 <span id="gender"></span>
                             </div>
@@ -147,11 +190,9 @@ export const ServProProfile = () => {
                         <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="maritalStatus">Marital Status</label>
-                                <select name="" {...register('maritalStatus')}>
-                                    <option value="" selected disabled> </option>
-                                    <option value="Married">Married</option>
-                                    <option value="Unmarried">Unmarriad</option>
-                                    <option value="Widowed">Widowed</option>
+                                <select name="" defaultValue={servProData?.maritalStatus} {...register('maritalStatus')}>
+                                    <option value={servProData?.maritalStatus} selected >{servProData?.maritalStatus} </option>
+                                    {printMaritalStatus(servProData?.maritalStatus)}
                                 </select>
                                 <span id="maritalStatus"></span>
                             </div>
@@ -159,22 +200,21 @@ export const ServProProfile = () => {
                         <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="email">Email</label>
-                                <input type="text" {...register('email')}/>
+                                <input type="text" defaultValue={servProData?.email} disabled {...register('email')}/>
                                 <span id='email'></span>
                             </div>
                             <div className={css.input}>
                                 <label htmlFor="phone">Phone</label>
-                                <input type="number" {...register('phone')}/>
+                                <input type="number" defaultValue={servProData?.phone} {...register('phone')}/>
                                 <span id='phone'></span>
                             </div>
                         </div>
                         <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="country">Country</label>
-                                <select name=""  {...register('country')}>
-                                    <option value="select" selected disabled></option>
-                                    <option value="India" >India</option>
-                                    <option value="Nepal">Nepal</option>
+                                <select name="" defaultValue={servProData?.address?.country} {...register('country')}>
+                                    <option value={servProData?.address?.country} selected >{servProData?.address?.country}</option>
+                                    {printCountry(servProData?.address?.country)}
                                 </select>
                                 <span id="country"></span>
                             </div>
@@ -182,25 +222,33 @@ export const ServProProfile = () => {
                         <div className={css.rowCols1}>
                             <div className={css.input}>
                                 <label htmlFor="street" >Street, Area or Society</label>
-                                <textarea  cols="10" rows="5"  {...register('street')}></textarea>
+                                <textarea  cols="10" rows="5" defaultValue={servProData?.address?.street} {...register('street')}></textarea>
                                 <span id='street'></span>
                             </div>
                             
                         </div>
-                        <div className={css.rowCols3}>
+
+                        <div className={css.rowCols2}>
                             <div className={css.input}>
-                                <label htmlFor="city" >City</label>
-                                <input type="text"  {...register('city')}/>
-                                <span id='city'></span>
+                                <label htmlFor="area" >Area</label>
+                                <input type="text" defaultValue={servProData?.address?.area} {...register('area')}/>
+                                <span id='area'></span>
                             </div>
                             <div className={css.input}>
+                                <label htmlFor="city" >City</label>
+                                <input type="text" defaultValue={servProData?.address?.city} {...register('city')}/>
+                                <span id='city'></span>
+                            </div>
+                        </div>
+                        <div className={css.rowCols2}>
+                            <div className={css.input}>
                                 <label htmlFor="state" >State</label>
-                                <input type="text"  {...register('state')}/>
+                                <input type="text" defaultValue={servProData?.address?.state} {...register('state')}/>
                                 <span id='state'></span>
                             </div>
                             <div className={css.input}>
                                 <label htmlFor="pincode" >Postal Code</label>
-                                <input type="text" {...register('pincode')}/>
+                                <input type="text" defaultValue={servProData?.address?.pincode} {...register('pincode')}/>
                                 <span id='pincode'></span>
                             </div>
                         </div>
@@ -213,7 +261,7 @@ export const ServProProfile = () => {
                                         <div className={css.dropBoxInner} id='dropBoxInner'>
                                             <br />
                                             <br />
-                                            <img id="displaySelectedFile" className={css.displaySelectedFile} src={imgIcon} height="100px" alt="wait" />
+                                            <img id="displaySelectedFile" className={css.displaySelectedFile} src={servProData?.profilePictureUrl} height="100px" alt="wait" />
                                             <p id='image-message'>Click here to upload image</p>
                                         </div>
                                     </label>
@@ -232,18 +280,15 @@ export const ServProProfile = () => {
                         <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="qualification">Qualification</label>
-                                <select  {...register('qualification')}>
-                                    <option value="select" selected disabled></option>
-                                    <option value="10th Pass">10th Pass</option>
-                                    <option value="10th Pass">12th Pass</option>
-                                    <option value="Graduate">Graduate</option>
-                                    <option value="Post-gradute">Post-gradute</option>
+                                <select defaultValue={servProData?.education?.qualification} {...register('qualification')}>
+                                    <option value={servProData?.education?.qualification} selected >{servProData?.education?.qualification}</option>
+                                    {printQualification(servProData?.education?.qualification)}
                                 </select>
                                 <span id='qualification'></span>
                             </div>
                             <div className={css.input}>
                                 <label htmlFor="degree">Degree (If graduate)</label>
-                                <input type="text"  {...register('degree')} />
+                                <input type="text" defaultValue={servProData?.education?.degree} {...register('degree')} />
                                 <span id='degree'></span>
                             </div>
                         </div>
@@ -258,24 +303,24 @@ export const ServProProfile = () => {
                         <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="accountHolder">Name as per bank account</label>
-                                <input type="text" {...register('accountHolder')} />
+                                <input type="text" defaultValue={servProData?.bankAccount.accountHolder} {...register('accountHolder')} />
                                 <span id='accountHolder'></span>
                             </div>
                             <div className={css.input}>
                                 <label htmlFor="accountNumber">Account Number</label>
-                                <input type="text"  {...register('accountNumber')}/>
+                                <input type="text" defaultValue={servProData?.bankAccount.accountNumber} {...register('accountNumber')}/>
                                 <span id='accountNumber'></span>
                             </div>
                         </div>
                         <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="bank">Bank Name</label>
-                                <input type="text"  {...register('bank')} />
+                                <input type="text" defaultValue={servProData?.bankAccount.bank} {...register('bank')} />
                                 <span id='bank'></span>
                             </div>
                             <div className={css.input}>
                                 <label htmlFor="ifsc">IFSC code</label>
-                                <input type="text" {...register('ifsc')}/>
+                                <input type="text" defaultValue={servProData?.bankAccount.ifsc} {...register('ifsc')}/>
                                 <span id='ifsc'></span>
                             </div>
                         </div>
@@ -290,7 +335,7 @@ export const ServProProfile = () => {
                         <div className={css.rowCols2}>
                             <div className={css.input}>
                                 <label htmlFor="password">Password</label>
-                                <input type="text"  {...register('password')} />
+                                <input type="text" defaultValue={servProData?.password} {...register('password')} />
                                 <span id='password'></span>
                             </div>
                             

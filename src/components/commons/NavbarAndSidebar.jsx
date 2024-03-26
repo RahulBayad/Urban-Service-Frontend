@@ -27,7 +27,7 @@ export const Navbar = () => {
   const searchBar = async ()=>{
     try{
     const name = document.getElementById('search').value;
-    let search = await axios.get("http://localhost:4001/service/getServiceBySearch",{
+    let search = await axios.get("/service/getServiceBySearch",{
       params :{
         name : name
       }
@@ -65,9 +65,17 @@ export const Navbar = () => {
     sessionStorage.removeItem("isLoggedIn");
     // history.replace('/');
   }
-  const cart = ()=>{
+  const cartandSearch = ()=>{
     if(path.includes('user')){   
         return(
+          <span className='search-and-cart'>
+        <span>
+          <input type="search" placeholder='Search Services' id="search" />
+          <label htmlFor="search"  onClick={()=>searchBar()}>
+          <span style={{position:'relative',top:"7px",right:"0px"}} class="material-symbols-outlined" >search</span>
+          </label>
+        </span>
+        <span>
           <div style={{display:"flex"}}>
           <Link to='/user/cart'>
           <span id='cart-icon' className="material-symbols-outlined">shopping_cart</span>
@@ -77,7 +85,9 @@ export const Navbar = () => {
             <span className='cartLength' >{cartLength}</span>
             : null
           }
-          </div>
+          </div>   
+        </span>
+      </span>
         )
     }else{
         console.log("cart icon not allowed here");
@@ -85,11 +95,13 @@ export const Navbar = () => {
   }
 
   useEffect(()=>{
-    const initializeCart = async () => {
-      let cart = await getCart();
-      await setCartLength(cart?.length);
-    };
-    initializeCart(); 
+    if(path.includes('user')){
+      const initializeCart = async () => {
+        let cart = await getCart();
+        await setCartLength(cart?.length);
+      };
+      initializeCart(); 
+    }
   })
 
   const userLinks = [
@@ -101,8 +113,8 @@ export const Navbar = () => {
   ]
   const serviceproviderLinks = [
     { name :"Dashboard",link : "/serviceprovider",icon : home , css : {marginBottom :"2px"},imgHeight : "21px"},
-    { name :"Add service",link : "/serviceprovider/addservice",icon : servicesIcon , css : {marginBottom :"2px"},imgHeight : "21px"},
-    { name :"My Services",link : "/serviceprovider/myservices",icon : services , css : {marginBottom :"3px"},imgHeight : "21px"},
+    { name :"Add service",link : "/serviceprovider/addservice",icon : addservice , css : {marginBottom :"2px"},imgHeight : "21px"},
+    { name :"My Services",link : "/serviceprovider/myservices",icon : servicesIcon , css : {marginBottom :"3px"},imgHeight : "21px"},
     { name :"Profile",link : "/serviceprovider/profile",icon : user , css : {marginTop :"-3px",marginLeft : "-1px"},imgHeight : "26px"},
     { name :"Logout",link : "/",icon : logout , css : {marginBottom:"2px",marginLeft:"3px"},imgHeight : "21px"}
   ]
@@ -123,34 +135,9 @@ export const Navbar = () => {
           </Link>
         </span>
       </span>
-      <span className='search-and-cart'>
-        <span>
-          <input type="search" placeholder='Search Services' id="search" />
-          <label htmlFor="search"  onClick={()=>searchBar()}>
-          <span style={{position:'relative',top:"7px",right:"0px"}} class="material-symbols-outlined" >search</span>
-          </label>
-        </span>
-        <span>
-          {
-            cart()
-          }
-        </span>
-      </span>
-      {/* <span className="city-and-user">
-        <div className="city">
-         
-          <span class="material-symbols-outlined" id='location-icon'>location_on</span>
-          <select id='city' onChange={changeCity}>
-            <option value="null" selected >Select your city</option>
-            <option value="ahmedabad">Ahmedabad</option>
-            <option value="surat">Surat</option>
-            <option value="mumbai">Mumbai</option>
-            <option value="bangalore">Bangalore</option>
-            <option value="delhi">Delhi</option>
-            <option value="jaipur">Jaipur</option>
-          </select>
-        </div>
-      </span> */}
+      {
+        cartandSearch()
+      }
     </div>
     <div className='sidebar' id='sidebar'>
       <close-icon><span class="material-symbols-outlined" onClick={handleCloseSidebar} style={{float:"right",cursor:"pointer"}}>close</span></close-icon>
@@ -218,19 +205,6 @@ export const Navbar = () => {
     </div>
 
     <div className='searchBody'>
-
-      {/* {
-        services.length > 0 ?
-          services.map((service)=>{
-            return(
-              <>
-              <div>{service.name}</div>
-              <div>{service.fees}</div>
-              <div>{service.serviceImageUrl}</div>
-              </>
-          )
-          }) : <div>no items</div>
-      } */}
 
     </div>
     <Outlet/>

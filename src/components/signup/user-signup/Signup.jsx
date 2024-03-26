@@ -33,7 +33,7 @@ export const Signup = () => {
       }
       try{
 
-        const signUp = await axios.post("http://localhost:4001/user/user",userObj);
+        const signUp = await axios.post("/user/user",userObj);
         console.log(signUp.data.data);
         alert("Signup success");
         navigate("/")
