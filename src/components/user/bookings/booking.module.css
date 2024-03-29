@@ -117,6 +117,40 @@
     color: rgb(78, 78, 78);
     letter-spacing: 0.3px;
 }
+
+.service .statusSuccess{
+    border: none;
+    background: none;
+    font-family: 'roboto';
+    font-size: 13px;
+    border-radius: 4px;
+    padding: 4px 0;
+    align-self: center;
+    font-weight: 500;
+    color:green;
+}
+.service .statusPending{
+    color:rgb(222, 163, 0);
+    border: none;
+    background: none;
+    font-family: 'roboto';
+    font-size: 13px;
+    border-radius: 4px;
+    padding: 4px 0;
+    align-self: center;
+    font-weight: 500;
+}
+.service .statusCancelled{
+    border: none;
+    color:rgb(255, 0, 0);
+    font-weight: 500;
+    background: none;
+    font-family: 'roboto';
+    font-size: 13px;
+    border-radius: 4px;
+    padding: 4px 0;
+    align-self: center;
+}
 .bookingDetailsBody{
     height: 100%;
     width: 100%;

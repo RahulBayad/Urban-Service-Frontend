@@ -32,7 +32,7 @@ export const UserBooking = () => {
   }
   const previousOrders = async()=>{
     prevOrderBtn()
-    let filterOrder = totalOrders?.filter((order)=>order.status == "Finished")
+    let filterOrder = totalOrders?.filter((order)=>order.status == "Success")
     filterOrder = filterOrder.reverse()
     setOrders(filterOrder);
     console.log("order in prev is",orders);
@@ -110,7 +110,16 @@ export const UserBooking = () => {
                               <img src={services.service.serviceImageUrl}  alt="" />
                             </div>
                             <div>
-                              <div className={css.serviceName}>{services.service.name}</div>
+                              <div style={{display:"grid",gridTemplateColumns:"auto 80px"}}>
+                                <span className={css.serviceName}>{services.service.name}</span>
+                                {
+                                  order.status == "Success" ? <button className={css.statusSuccess}>{order.status}</button>
+                                  : order.status == "Pending" ?
+                                  <button className={css.statusPending}>{order.status}</button>
+                                  : order.status == "Cancelled" ?
+                                  <button className={css.statusCancelled}>{order.status}</button> : null
+                                }
+                              </div>
                               <hr />
                               {
                                 services.service.description.length > 1 
@@ -123,7 +132,11 @@ export const UserBooking = () => {
                                 </ul>
                                 :<div style={{fontSize:"13px",paddingBottom:"15px"}}>{services.service.description[0].line}</div>
                               }
-                              <div style={{fontSize:"13px",marginTop:"0px",fontWeight:"500",color:"rgb(60, 60, 60)"}}>₹ {services.service.fees}</div>
+                              <div>
+                                <span style={{fontSize:"13px",marginTop:"0px",fontWeight:"500",color:"rgb(60, 60, 60)"}}>₹ {services.service.fees}</span>
+                                &nbsp;&nbsp;
+                                
+                              </div>
                             </div>
                             
                           </div>
@@ -207,7 +220,17 @@ export const UserBooking = () => {
                               <img src={services.service.serviceImageUrl}  alt="" />
                             </div>
                             <div>
-                              <div className={css.serviceName}>{services.service.name}</div>
+                              <div style={{display:"grid",gridTemplateColumns:"auto 80px"}}>
+                                <span className={css.serviceName}>{services.service.name}</span>
+                                {
+                                  orderInfo.status == "Success" ? <button className={css.statusSuccess}>{orderInfo.status}</button>
+                                  : orderInfo.status == "Pending" ?
+                                  <button className={css.statusPending}>{orderInfo.status}</button>
+                                  : orderInfo.status == "Cancelled" ?
+                                  <button className={css.statusCancelled}>{orderInfo.status}</button> : null
+                                }
+                              </div>
+                                
                               <hr />
                               {
                                 services.service.description.length > 1 
@@ -220,7 +243,10 @@ export const UserBooking = () => {
                                 </ul>
                                 :<div style={{fontSize:"13px",paddingBottom:"15px"}}>{services.service.description[0].line}</div>
                               }
-                              <div style={{fontSize:"13px",marginTop:"0px",fontWeight:"500",color:"rgb(60, 60, 60)"}}>₹ {services.service.fees}</div>
+                              <div>
+                                <span style={{fontSize:"13px",marginTop:"0px",fontWeight:"500",color:"rgb(60, 60, 60)"}}>₹ {services.service.fees}</span>
+                                &nbsp;&nbsp;
+                              </div>
                             </div>
                             
                           </div>

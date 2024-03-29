@@ -62,23 +62,29 @@ export const Signup = () => {
 
       <div className={css.userSignupContainer}>
         <div className={css.signupFormContainer}>
-            <h1 >Sign-up</h1><br />
+            <h1 >Sign-up</h1>
             <form className={css.signupForm} id="signupForm" onSubmit={handleSubmit(submitHandler)} >
               <div className={css.input}>
-                  <input type="text" placeholder='Email' {...register("email")}  />
+                  <label htmlFor="email">Email</label>
+                  <input type="text" id='email' placeholder='' {...register("email")}  />
               </div>
               <div className={css.input}>
-                  <input type="number" length='10' placeholder='Mobile Number' {...register("phone")}  />
+                  <label htmlFor="phone">Phone</label>  
+                  <input type="number" id='phone' length='10' placeholder='' {...register("phone")}  />
               </div>
               <div className={css.input}>
-                  <input type="password" placeholder='Password' {...register("password")}  />
+                  <label htmlFor="password">Password</label>
+                  <input type="password" id='password' className={css.forgetPwd} placeholder='' {...register("password")}  />
+                  <Link className={css.forgetPwd}>Forget Password ?</Link>
               </div>
               <div className={css.input}>
                   <input type="submit" value="Signup" />
               </div>
             </form>
-            <p style={{textAlign:"center",fontSize:"13px",lineHeight:"15px"}}>or</p>
-            <Link className={css.registerLink} to="/">Login</Link>
+            <p style={{textAlign:"center",fontSize:"13px",lineHeight:"15px"}}>OR</p>
+            <div className={css.loginBtn} >Already Registered ? <Link to="/" className={css.loginLink}>Login Here</Link></div>
+
+            {/* <Link className={css.registerLink} to="/">Login</Link> */}
             <br /> 
             <br />  
         </div>

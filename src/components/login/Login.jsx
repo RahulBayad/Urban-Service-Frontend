@@ -83,26 +83,31 @@ export const Login = () => {
               <h1 >Login</h1><br />
               <form className={css.loginForm} onSubmit={handleSubmit(submitHandler)}>
               <div className={css.input}>
-                  <input type="text" placeholder='Email' name="email" {...register("email")} />
+                  <label htmlFor="email">Email</label>
+                  <input type="text" placeholder='' id='email' name="email" {...register("email")} />
               </div>
               <div className={css.input}>
-                  <select name="role" className={css.selectTag} {...register("role")} >
-                    <option value="role" disabled selected>Role</option>
+                <label htmlFor="role">Role</label>
+                  <select name="role" id='role' className={css.selectTag} {...register("role")} >
+                    {/* <option value="role" disabled selected>Role</option> */}
                     <option value="65ce45bddb522781cc3c0c9a">User</option>
                     <option value="65ce45cfdb522781cc3c0c9c">Service Provider</option>
                   </select>
               </div>
               <div className={css.input}>
-                  <input type="password" placeholder='Password' {...register("password")} />
+                <label htmlFor="password">Password</label>
+                <input type="password" id='password' placeholder='' {...register("password")} />
+                <Link className={css.forgetPwd}>Forget Password ?</Link>
               </div>
               <div className={css.input}>
                   <input type="submit" value="Login" />
               </div>
               </form>
               <p style={{textAlign:"center",fontSize:"13px"}} >
-                or
+                OR
                 </p>
-                <button onClick={openRegister} className={css.signupBtn}>Signup</button>
+                <span className={css.registerBtn}>Dont't have an account ? <Link onClick={openRegister} className={css.signupBtn}>SignUp Here</Link></span>
+                {/* <button onClick={openRegister} className={css.signupBtn}>Signup</button> */}
               <br /><br />
               
              <br />
