@@ -94,11 +94,11 @@ export const Cart = () => {
                                 ?<ul> 
                                     {
                                     service.description.map((description)=>{
-                                        return <li>{description.line}</li>
+                                        return <li>{description?.line}</li>
                                     })
                                     }     
                                 </ul>
-                                :<div style={{fontSize:"13px"}}>{service.description[0].line}</div>
+                                :<div style={{fontSize:"13px"}}>{service.description[0]?.line}</div>
                             }
                             <br />
                             <div>

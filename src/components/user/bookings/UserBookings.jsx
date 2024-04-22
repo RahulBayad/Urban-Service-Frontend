@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import css from './booking.module.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios, { all } from 'axios'
 import {allOrderBtn,pendingOrderBtn,prevOrderBtn,cancelledOrderBtn} from './bookingScripts'
 
@@ -13,21 +15,21 @@ export const UserBooking = () => {
   const allOrders = async()=>{
     allOrderBtn()
     setOrders(totalOrders);
-    console.log("order in current is",orders);
+    // console.log("order in current is",orders);
   }
   const pendingOrders = async()=>{
     pendingOrderBtn()
-    let filterOrder = totalOrders?.filter((order)=>order.status == "Pending")
+    let filterOrder = totalOrders?.filter((order)=>order.status == "Pending" || "Confirmed")
     filterOrder = filterOrder.reverse()
     setOrders(filterOrder);
-    console.log("order in current is",orders);
+    // console.log("order in current is",orders);
   }
   const cancelledOrders = async()=>{
     cancelledOrderBtn()
     let filterOrder = totalOrders?.filter((order)=>order.status == "Cancelled")
     filterOrder = filterOrder.reverse()
     setOrders(filterOrder);
-    console.log("order in cancelled is",orders);
+    // console.log("order in cancelled is",orders);
     
   }
   const previousOrders = async()=>{
@@ -35,11 +37,11 @@ export const UserBooking = () => {
     let filterOrder = totalOrders?.filter((order)=>order.status == "Success")
     filterOrder = filterOrder.reverse()
     setOrders(filterOrder);
-    console.log("order in prev is",orders);
+    // console.log("order in prev is",orders);
   }
-
   const getOrderInfo = async(order)=>{
     setOrderInfo(order);
+    // console.log("view order details",order)
     let bookingDetailsBody = document.getElementById("bookingDetailsBody")
     bookingDetailsBody.style.display = "block" 
   }
@@ -48,19 +50,31 @@ export const UserBooking = () => {
     bookingDetailsBody.style.display = "none" 
   }
 
-  useEffect(()=>{
-    let getOrders = async ()=>{
-      try {
-        let order = await axios.get(`/userhistory/userhistory/${sessionStorage.getItem("userEmail")}`);
-        console.log("orders are",order.data.orders[0].history)
-        let orderArr = order.data.orders[0].history;
-        orderArr = orderArr.reverse();
-        await setTotalOrders(orderArr);
-        await setOrders(orderArr);
-      } catch (error) {
-        console.log("error is",error)
-      }
+  const cancelOrder = async(order)=>{
+    try {
+      let response = await axios.put(`/userhistory/cancelOrder/${sessionStorage.getItem("userEmail")}` , order)
+      console.log("response",response)
+      toast.success(response.data.message,{position:"top-center",theme:"colored"})
+      closeOrderInfo();
+      getOrders();
+    } catch (error) {
+      console.log("error",error)
     }
+  }
+
+  const getOrders = async ()=>{
+    try {
+      let order = await axios.get(`/userhistory/userhistory/${sessionStorage.getItem("userEmail")}`);
+      console.log("orders are",order.data.orders[0].history)
+      let orderArr = order.data.orders[0].history;
+      orderArr = orderArr.reverse();
+      await setTotalOrders(orderArr);
+      await setOrders(orderArr);
+    } catch (error) {
+      console.log("error is",error)
+    }
+  }
+  useEffect(()=>{
     getOrders()
     
   },[])
@@ -117,7 +131,8 @@ export const UserBooking = () => {
                                   : order.status == "Pending" ?
                                   <button className={css.statusPending}>{order.status}</button>
                                   : order.status == "Cancelled" ?
-                                  <button className={css.statusCancelled}>{order.status}</button> : null
+                                  <button className={css.statusCancelled}>{order.status}</button> : 
+                                  <button className={css.statusPending}>{order.status}</button>  
                                 }
                               </div>
                               <hr />
@@ -157,7 +172,15 @@ export const UserBooking = () => {
       <div className={css.bookingDetailsContainer}>
           <div className={css.h1} style={{backgroundColor:"rgb(215, 180, 255)"}}>Order Details  <span class="material-symbols-outlined" onClick={()=>closeOrderInfo()} style={{cursor:"pointer",float:"right",margin:"13px 10px"}}>close</span></div>
           <div className={css.bookingContainer}>
-            <div style={{paddingBottom:"10px",fontWeight:"500"}}>Booked On ({orderInfo?.bookingDate})</div>
+            <div className={css.dateAndCancel}>
+              <div style={{paddingBottom:"10px",fontWeight:"500"}}>Booked On ({orderInfo?.bookingDate})</div>
+              {
+                orderInfo?.status === "Pending" ?
+                <div style={{textAlign:"right"}}>
+                  <button className={css.cancelOrder} onClick={()=>cancelOrder(orderInfo)}>Cancel Order</button>
+                </div> : null
+              }
+            </div>
             <div className={css.bookingInfoContainer}>
               <div>
                 <div className={css.orderHeader}>Address</div>
@@ -257,6 +280,7 @@ export const UserBooking = () => {
           </div>
       </div>
     </div>
+    <ToastContainer/>
     </div>
   )
 }

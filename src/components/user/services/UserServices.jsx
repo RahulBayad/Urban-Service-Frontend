@@ -69,14 +69,18 @@ export  const UserServices =  () => {
       return updatedAmount;
   }
   const addBtnHandler = async (service)=>{
-    await addToCart(service);
-
-    let cart = await getCart();
-    console.log("cart is updates",cart)
-    setServiceCart(cart);
-
-    let amount = await updateCartAmount(cart);
-    setTotalAmount(amount);
+    try {
+      await addToCart(service);
+  
+      let cart = await getCart();
+      console.log("cart is updated",cart)
+      setServiceCart(cart);
+  
+      let amount = await updateCartAmount(cart);
+      setTotalAmount(amount); 
+    } catch (error) {
+      console.log("error",error)
+    }
   }
 
   const getServices =async (category ,type )=>{
@@ -102,6 +106,7 @@ export  const UserServices =  () => {
   }
 
   useEffect( ()=>{
+    try {
       let getTypes= async ()=>{
         try {    
           let fetchedTypes = await ApiHandle(category , type );
@@ -133,6 +138,10 @@ export  const UserServices =  () => {
     };
   
     initializeCart();
+      
+    } catch (error) {
+      console.log("error in use effect",error)
+    }
   } , [])
   
    if( serviceRoutes.includes(category)){

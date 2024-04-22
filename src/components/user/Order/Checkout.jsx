@@ -111,7 +111,7 @@ export const Checkout = () => {
 
   const checkFormHandler = async (formData)=>{
     let calender = new Date();
-    let todayDate = calender.getDate()+"-"+calender.getMonth()+"-"+calender.getFullYear()
+    let todayDate = calender.getDate()+"-"+(calender.getMonth()+1)+"-"+calender.getFullYear()
     formData.address = JSON.parse(formData.address);
     formData.user = user;
     formData.email = user.email;
@@ -227,7 +227,7 @@ export const Checkout = () => {
                               </div>
                               <label htmlFor={radioId} onClick={()=>changeBkg(addId)}>
                                 <div>{address.fname} {address.lname}, ({address.phone})</div>
-                                <div>{address.street} , {address.area}  {address.city}, {address.state}-{address.pincode}, {address.country},</div>
+                                <div>{address.street} , {address.area} , {address.city}, {address.state}-{address.pincode}, {address.country},</div>
                               </label>
                               <div className={css.actionIcons}>
                                 <div>
@@ -418,6 +418,9 @@ export const Checkout = () => {
                 <textarea cols="30" rows="25" id='textarea'  placeholder='Street/ Flat no./ Building Name/ House no.' required {...register('street')} />
               </div>
               <div className={css.input}>
+                <input type="text" id='area' placeholder='Area' required  {...register('area')}  />
+              </div>
+              <div className={css.input}>
                 <input type="text" id='city' placeholder='City' required  {...register('city')}  />
               </div>
               <div className={css.input}>
@@ -459,6 +462,9 @@ export const Checkout = () => {
               </div>
               <div className={css.input}>
                 <textarea cols="30" rows="25" id='textarea' defaultValue={userAddress?.street} placeholder='Street/ Flat no./ Building Name/ House no.' required {...registerEditForm('street')} />
+              </div>
+              <div className={css.input}>
+                <input type="text" id='area' placeholder='Area' required defaultValue={userAddress?.area} {...registerEditForm('area')}  />
               </div>
               <div className={css.input}>
                 <input type="text" id='city' placeholder='City' required defaultValue={userAddress?.city} {...registerEditForm('city')}  />

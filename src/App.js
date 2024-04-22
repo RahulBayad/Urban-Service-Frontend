@@ -20,27 +20,33 @@ import { SearchService } from './components/user/searchService/SearchService.jsx
 import { Cart } from './components/user/Order/Cart.jsx';
 import { Checkout } from './components/user/Order/Checkout.jsx';
 import axios from 'axios';
+import { ServProBooking } from './components/serviceprovider/booking/ServProBooking.jsx';
 
 
 
 function  App() {
-  
-  const checkLogin = ()=>{
-    if(sessionStorage.getItem("isLoggedIn")){
-      return (<Navbar/>)
-    }else{
-      return (<CheckLogin/>)
-    }
-  }
+  const [loginStatus , setLoginStatus] = useState(false);
+
+ 
 
   axios.defaults.baseURL = "http://localhost:4001"
   // axios.defaults.baseURL = "https://urban-service-backend-6wmj.onrender.com";
+  const checkLogin = async()=>{
+  
+    if(sessionStorage.getItem("isLoggedIn")){
+      await setLoginStatus(true)
+      // console.log("true")
+      // return true 
+    }else{
+      await setLoginStatus(false)
+      // console.log("false")
+      // return false
+    }
+  }
 
   useEffect(() => {
-    // const [isLoggedIn, setIsLoggedIn] = useState(sessionStorage.getItem("isLoggedIn"));
-    // Update the login status whenever it changes in sessionStorage
-    // setIsLoggedIn(sessionStorage.getItem("isLoggedIn") === "true");
-  }, []);
+    checkLogin();
+  }, [window.location.pathname]);
   
   return (
     <div className="App">
@@ -60,9 +66,10 @@ function  App() {
             <Route path='checkout' element={<Checkout/>}></Route>
           </Route>  
 
-          <Route path='/serviceprovider' element={sessionStorage.getItem("isLoggedIn") ? <Navbar/> : <CheckLogin/>} >
+          <Route path='/serviceprovider' render={()=>setLoginStatus(sessionStorage.getItem("isLoggedIn"))} element={loginStatus ? <Navbar/> : <CheckLogin/>} >
             <Route index element={<ServProHome/>} />
-            <Route path='addservice' element={<AddService/>}></Route>
+            <Route path='addservice'  element={<AddService/>}></Route>
+            <Route path='bookings'  element={<ServProBooking/>}></Route>
             <Route path='myservices' element={<MyServices/>}></Route>
             <Route path='profile' element={<ServProProfile/>}></Route>
           </Route>

@@ -9,7 +9,7 @@ export const todaySlotFunction = ()=>{
     today.style.display = "flex"
     tomorrow.style.display = "none"
     let date = new Date()
-    let result = date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear();
+    let result = date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear();
     return result
 }
 export const tomorrowSlotFunction = ()=>{
@@ -22,7 +22,7 @@ export const tomorrowSlotFunction = ()=>{
     tomorrow.style.display = "flex"
     today.style.display = "none"
     let date = new Date()
-    let result = (date.getDate()+1)+"-"+date.getMonth()+"-"+date.getFullYear();
+    let result = (date.getDate()+1)+"-"+(date.getMonth()+1)+"-"+date.getFullYear();
     return result
 }
 

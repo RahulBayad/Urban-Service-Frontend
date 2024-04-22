@@ -7,7 +7,17 @@ export const MyServices = () => {
 
   const [services , setServices] = useState([]);
 
-  
+  const deleteService = async (index)=>{
+    try {
+      let response = await axios.put(`/serviceprovider/deleteService/${sessionStorage.getItem("servProEmail")}`, {index : index})
+      if(response.data.data.modifiedCount === 1){
+        // toast("Service removed")
+      }
+      getServices()
+    } catch (error) {
+      console.log("error",error)
+    }
+  }  
 
   const getServices = async()=>{
     try{
@@ -51,7 +61,7 @@ export const MyServices = () => {
                       <td>{service.serviceType.subcategory.category.name}</td> 
                       <td>
                         {/* <button className='delete-btn'>Delete</button> */}
-                        <span class="material-symbols-outlined">delete</span>
+                        <span class="material-symbols-outlined" onClick={()=>deleteService(index)}>delete</span>
                       </td>
                     </tr>
                   )

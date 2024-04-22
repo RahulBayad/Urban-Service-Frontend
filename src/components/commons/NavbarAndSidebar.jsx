@@ -115,6 +115,7 @@ export const Navbar = () => {
     { name :"Dashboard",link : "/serviceprovider",icon : home , css : {marginBottom :"2px"},imgHeight : "21px"},
     { name :"Add service",link : "/serviceprovider/addservice",icon : addservice , css : {marginBottom :"2px"},imgHeight : "21px"},
     { name :"My Services",link : "/serviceprovider/myservices",icon : servicesIcon , css : {marginBottom :"3px"},imgHeight : "21px"},
+    { name :"Bookings",link : "/serviceprovider/bookings",icon : bookings , css : {marginBottom :"3px"},imgHeight : "21px"},
     { name :"Profile",link : "/serviceprovider/profile",icon : user , css : {marginTop :"-3px",marginLeft : "-1px"},imgHeight : "26px"},
     { name :"Logout",link : "/",icon : logout , css : {marginBottom:"2px",marginLeft:"3px"},imgHeight : "21px"}
   ]
