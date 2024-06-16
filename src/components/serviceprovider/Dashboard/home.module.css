@@ -37,8 +37,8 @@
 .actionBtn{
     display: flex;
     gap: 5px;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 .requestTableContainer  button div{
     font-size: 15px;
@@ -54,11 +54,13 @@
     font-weight: 500;
 }
 .acceptBtn{
+    height: 32px;
     background-color: rgb(195, 255, 187);
     color: green;
     font-weight: 500;
 }
 .rejectBtn{
+    height: 32px;
     background-color: rgb(255, 218, 218);
     color: red;
     font-weight: 500;

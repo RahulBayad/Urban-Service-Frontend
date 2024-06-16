@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import css from './home.module.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios'
 
 export const ServProHome = () => {
@@ -7,10 +9,21 @@ export const ServProHome = () => {
   const [requests , setRequests] = useState([])
   const [orderInfo , setOrderInfo] = useState();
 
+  const calcTotal = (array)=>{
+    // console.log("array",array)
+    var total = 0
+    for(let a of array){
+      total = total + (a.cost * a.qty)
+    }
+    return total
+  }
+
   const addOrder = async(order)=>{
     try {
       let response = await axios.post(`/servprohistory/addservice/${sessionStorage.getItem("servProEmail")}`,order)
       console.log("response",response)
+      toast.success(response.data.message,{position:"top-center",theme:"colored"})
+      fetchRequests();
     } catch (error) {
       console.log(error)
     }
@@ -25,7 +38,7 @@ export const ServProHome = () => {
   const fetchRequests = async ()=>{
     try {
       let request = await axios.get(`/serviceprovider/fetchServiceRequests/${sessionStorage.getItem("servProEmail")}`)
-      console.log("request are",request)
+      console.log("request are",request.data.data)
       setRequests(request.data.data)
     } catch (error) {
       console.log(error)
@@ -60,21 +73,22 @@ export const ServProHome = () => {
                 let rowId = "request"+index
                 return(
                   <div className={css.requestRow} id={rowId}>
+                    <div>
                     {
                       request?.service.map((service)=>{
                         return(
-                          <div>{service.service.name}</div>
-                        )
-                      })
+                            <div>{service.service.name}</div>
+                          )
+                        })
+                      }
+                    </div>
+                    
+                    {
+                      request?.service? 
+                      <div>₹ {calcTotal(request.service)}</div> : null
                     }
+                    
                     <div>{request?.deliveryAddress.area}</div>
-                    {
-                      request?.service.map((service)=>{
-                        return(
-                          <div>₹ {service.cost}</div>
-                        )
-                      })
-                    }
                     <div>
                       <button className={css.infoBtn} onClick={()=>getOrderInfo(request)}>
                         <span class="material-symbols-outlined">info</span>
@@ -157,29 +171,33 @@ export const ServProHome = () => {
                           </tr>
                         ))
                       }
-                      {
-                        orderInfo?.service.map((service)=>(
-                          <tr>
-                            <td>Total</td>
-                            <td></td>
+                      <tr>
+                        <td>Total</td>
+                        <td></td>
+                        {/* {
+                          orderInfo?.service.map((service)=>(
                             <td>₹ {service.cost * service.qty}</td>
-                          </tr>   
-                        ))
-                      }
+                          ))
+                          
+                        } */}
+                        {
+                          orderInfo?.service? 
+                          <td>{calcTotal(orderInfo.service)}</td> : null
+                        }
+                      </tr>   
                       <tr>
                         <td>Discount {orderInfo?.discount1}</td>
                         <td></td>
                         <td>- ₹ 0</td>
                       </tr>
-                      {
-                        orderInfo?.service.map((service)=>(
-                          <tr>
-                            <td>Grand Total </td>
-                            <td></td>
-                            <td>₹ {service.cost * service.qty}</td>
-                          </tr>   
-                        ))
-                      }
+                      <tr>
+                        <td>Grand Total </td>
+                        <td></td>
+                        {
+                          orderInfo?.service? 
+                          <td>{calcTotal(orderInfo.service)}</td> : null
+                        }
+                      </tr>   
                     </tbody>
                   </table>
                 </div>
@@ -233,6 +251,7 @@ export const ServProHome = () => {
           
       </div>
     </div>
+    <ToastContainer/>
     </div>
   )
 }

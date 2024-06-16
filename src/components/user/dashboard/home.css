@@ -1,88 +1,123 @@
-
-.dashboard-page{
-    text-decoration: none; 
-    /* border: 1px solid green;     */
-    /* height:100vh */
+.dashboard-page {
+  text-decoration: none;
+  /* border: 1px solid green;     */
+  /* height:100vh */
 }
 
-.slick-slider{
-    margin-top: -1px;
-    width: 100%;
-    /* padding: 0 60px;  */
+.slider-container {
+  /* border: 1px solid red; */
+  height: 300px;
 }
-.slides{
-    background-color: rgb(201, 201, 201);
-    height: 300px;
-    /* padding: 0px 100px; */
-    /* padding-left:100px; */
-    /* padding-right:100px; */
-    width: 10%;
+.slick-slider {
+  margin-top: -1px;
+  /* height: 300px; */
+  /* width: 100%; */
+  /* padding: 0 60px;  */
 }
-.slides h3{
-    background-color: red;
-    margin-top: 0;   
-    color: white;  
+.slides {
+  background-color: rgb(201, 201, 201);
+  height: 280px;
+  /* padding: 0px 100px; */
+  /* padding-left:100px; */
+  /* padding-right:100px; */
+  /* width: 10%; */
 }
-.slick-next{
-    right: 3px;
-    filter: invert(0.2);
+.slides h3 {
+  /* background-color: red; */
+  margin-top: 0;
+  color: white;
 }
-.slick-prev{
-    left: 3px;
-    z-index: 10;
-    filter: invert(0.2);
-    z-index: 1;
+.slick-next {
+  right: 3px;
+  filter: invert(0.2);
 }
-.main{
-    /* border: 2px solid rgb(15, 210, 19); */
-    /* height: 300px; */
-    /* width: 100%; */
-    padding: 0 6%;
-    /* overflow-y: scroll; */
-    
+.slick-prev {
+  left: 3px;
+  z-index: 10;
+  filter: invert(0.2);
+  z-index: 1;
 }
-.main .heading1{
-    font-weight: 500;
-    /* color: rgb(91, 91, 91); */
-    /* padding-left: 25px; */
+.main {
+  /* border: 2px solid rgb(15, 210, 19); */
+  /* height: 300px; */
+  /* width: 100%; */
+  padding: 0 6%;
+  /* overflow-y: scroll; */
 }
-.services-container1{
-    /* border: 1px solid rgb(1, 109, 3); */
-    display: flex;
-    flex-wrap: wrap-reverse;
-    gap: 10rem;
-    /* padding: 20px; */
-    position: relative;
+.main .heading1 {
+  font-weight: 500;
+  /* color: rgb(91, 91, 91); */
+  /* padding-left: 25px; */
 }
-.services-container1 .services-container{
-    border: 1px solid var(--border);
-    border-radius: 5px;
+.services-container1 {
+  /* border: 1px solid rgb(1, 109, 3); */
+  display: flex;
+  flex-wrap: wrap-reverse;
+  gap: 10rem;
+  /* padding: 20px; */
+  position: relative;
 }
-.services-container1 .services-container .services-list{
-    display: flex;
+.services-container1 .services-container {
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  /* padding: 0; */
+}
+.services-container1 .services-container .services-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  flex-direction: row;
+  /* border: 1px solid red; */
+  max-width: 580px;
+  padding: 20px;
+}
+.services-container1 .services-container .service {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  height: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  width: 150px;
+  text-decoration: none;
+  color: rgb(130, 130, 130);
+}
+.services-container1 .services-container .service:hover {
+  box-shadow: 0 0 3px rgb(173, 173, 173);
+}
+
+.services-container1 .services-container .service h4 {
+  font-size: 13px;
+  font-weight: 400;
+}
+
+@media screen and (max-width : 600px) {
+  .slick-slider{
+    height: 200px;
+  }
+  .slider-container{
+    height: 200px;
+  }
+  .slides{
+    height: 200px;
+  }
+  .services-container1 {
+    gap: 5rem;
+    /* padding: 0px 0px;
+     */
+  }
+  .services-container{
+    padding: 0px 0px;
+  }
+  .services-list{
     flex-wrap: wrap;
-    gap: 2rem;
     flex-direction: row;
-    /* border: 1px solid red; */
-    width: 580px;
-    padding: 20px;
-}
-.services-container1 .services-container .service{
-    cursor: pointer;
-    border: 1px solid var(--border);
-    height: 150px;
-    padding: 10px;
-    border-radius: 5px;
-    text-align: center;
-    width: 150px;
-    text-decoration:none;
-    color: rgb(130, 130, 130)
-}
-.services-container1 .services-container .service:hover{
-    box-shadow: 0 0 3px rgb(173, 173, 173);
-}
-
-.services-container1 .services-container .service h4{
-    font-size: 13px;
-    font-weight: 400;
+    padding: 0px;
+  }
+  .services-list Link{
+    min-width: 100px;
+  }
+  .main{
+    padding: 0 10px;
+  }
 }

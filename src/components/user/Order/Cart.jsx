@@ -115,65 +115,66 @@ export const Cart = () => {
                         </div>
 
                       )
-                    }) : <h4>No items in cart</h4> 
+                    }) : <h4 style={{textAlign:"center"}}>Empty</h4> 
                     }
                 </div>
                 <div className={css.placeOrderContainer}>
-                  <div style={{overflow:"auto",height:"300px"}}>
-                {
-                  serviceCart.length > 0 ?
-                  <table className={css.billingTable} border='0px'>
-                    <tbody>
-                      <tr>
-                        <th width='45%'></th>
-                        <th >Qty.</th>
-                        <th >Price</th>
-                        <th >Total</th>
-                      </tr>
-                        {
-                          
-                          serviceCart?.map((service)=>{
-                            return(
-                              <tr>
-                                <td>{service.name}</td>
-                                <td>{service.qty}</td>
-                                <td>₹ {service.fees}</td>
-                                <td>₹ {service.qty*service.fees}</td>
-                              </tr>
-                            )
-                          })
-                        }
-                      
-                      <tr style={{borderTop:" 1px solid black"}}>
-                        <td>Total </td>
-                        <td></td>
-                        <td></td>
-                        <td>₹ {totalAmount }</td>
-                      </tr>
-                      <tr>
-                        <td>Discount (10%)</td>
-                        <td></td>
-                        <td></td>
-                        <td>- ₹ {totalAmount/10}</td>
-                      </tr>
-                      <tr style={{borderTop:" 1px solid black"}}>
-                        <td>Total Fair Price</td>
-                        <td></td>
-                        <td></td>
-                        <td >₹ {totalAmount - totalAmount/10}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  {
+                    serviceCart.length > 0 ?
+                    <>
+                      <div style={{overflow:"auto"}}>
+                        <table className={css.billingTable} border='0px'>
+                          <tbody>
+                            <tr>
+                              <th width='45%'></th>
+                              <th >Qty.</th>
+                              <th >Price</th>
+                              <th >Total</th>
+                            </tr>
+                              {
+                                
+                                serviceCart?.map((service)=>{
+                                  return(
+                                    <tr>
+                                      <td>{service.name}</td>
+                                      <td>{service.qty}</td>
+                                      <td>₹ {service.fees}</td>
+                                      <td>₹ {service.qty*service.fees}</td>
+                                    </tr>
+                                  )
+                                })
+                              }
+                            
+                            <tr style={{borderTop:" 1px solid black"}}>
+                              <td>Total </td>
+                              <td></td>
+                              <td></td>
+                              <td>₹ {totalAmount }</td>
+                            </tr>
+                            <tr>
+                              <td>Discount (10%)</td>
+                              <td></td>
+                              <td></td>
+                              <td>- ₹ {totalAmount/10}</td>
+                            </tr>
+                            <tr style={{borderTop:" 1px solid black"}}>
+                              <td>Total Fair Price</td>
+                              <td></td>
+                              <td></td>
+                              <td >₹ {totalAmount - totalAmount/10}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>                  
+                      <div style={{display:"grid",gridTemplateColumns:"auto 100px",marginTop:"20px"}}>
 
-                : <h3>Cart is Empty</h3>
-                }
-                  </div>
-                  
-                  <div style={{display:"grid",gridTemplateColumns:"auto 100px"}}>
+                        <div style={{lineHeight:"35px",fontWeight:"500",fontSize:"13px",paddingLeft:"8px"}}>&nbsp;Final Amount ₹ {totalAmount - totalAmount/10}</div>
+                        <Link className={css.Link} to="/user/checkout">Place Order </Link>
+                      </div>
+                    </>
 
-                    <div style={{lineHeight:"35px",fontWeight:"500",fontSize:"13px",paddingLeft:"8px"}}>&nbsp;Final Amount ₹ {totalAmount - totalAmount/10}</div>
-                    <Link className={css.Link} to="/user/checkout">Place Order </Link>
-                  </div>
+                  : <h3>Cart is Empty</h3>
+                  }
 
                 </div>
 

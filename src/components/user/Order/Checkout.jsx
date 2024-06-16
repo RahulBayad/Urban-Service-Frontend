@@ -390,8 +390,7 @@ export const Checkout = () => {
                 : <h3>Cart is Empty</h3>
                 }
                   </div>
-                  <br />
-                  <br />
+                  
           </div>
         </div>
                

@@ -88,7 +88,7 @@
     box-shadow:  0 0 4px rgb(183, 183, 183);
     padding: 20px 25px;
     border-radius: 5px;
-    height: 75vh;
+    max-height: 75vh;
     background-color: white;
     display:grid;
     grid-template-rows: auto 50px;
@@ -150,4 +150,17 @@
 .billingTable td:nth-child(4){
     text-align: center;
 
+}
+
+@media screen and (max-width : 600px) {
+
+    .CartPageBody{
+        padding: 0px;
+        grid-template-columns: none;
+        /* grid-template-rows: auto auto; */
+        display: flex;
+        flex-direction: column-reverse;
+            gap: 20px;
+    }
+    
 }

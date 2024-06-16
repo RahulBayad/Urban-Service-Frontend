@@ -13,10 +13,10 @@ export const MensSpa = () => {
          <h2 className={css.heading2}>Massage for Men</h2>
         <div className={css.categoryContainer} id='categoryContainer'>
 
-          <Link to='/user/services/menSpa/relaxation' className={css.category} id='category'>
+          {/* <Link to='/user/services/menSpa/relaxation' className={css.category} id='category'>
             <img src={relaxation} height='280px' width='200px' style={{borderRadius : "10px"}} alt="" />
             <div>Relaxation</div>
-          </Link>
+          </Link> */}
           <Link to='/user/services/menSpa/stressrelief' className={css.category} id='category'>
             <img src={stressRelief} height='280px' width='200px' style={{borderRadius : "10px"}} alt="" />
             <div>Stress Relief</div>

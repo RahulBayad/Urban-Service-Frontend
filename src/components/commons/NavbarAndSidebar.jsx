@@ -90,7 +90,7 @@ export const Navbar = () => {
       </span>
         )
     }else{
-        console.log("cart icon not allowed here");
+        // console.log("cart icon not allowed here");
     }
   }
 
@@ -125,13 +125,13 @@ export const Navbar = () => {
 
 
   return (
-    <>
+    <div className='' style={{overflow:"hidden"}}>
       <div className="bkg-black" id='bkg-black'></div>
     <div className='navbar-home'>
       <span className="menu-logo">
         <span class="material-symbols-outlined" id="menu" onClick={handleOpenSidebar}>menu</span>
         <span>
-          <Link to="#">
+          <Link className='logo' to="#">
             <img src={urbanServiceLogo1} height="47px" alt="" style={{marginTop:"2px"}}/>
           </Link>
         </span>
@@ -209,7 +209,7 @@ export const Navbar = () => {
 
     </div>
     <Outlet/>
-    </>
+    </div>
     
   )
 }

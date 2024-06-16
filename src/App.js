@@ -25,28 +25,13 @@ import { ServProBooking } from './components/serviceprovider/booking/ServProBook
 
 
 function  App() {
-  const [loginStatus , setLoginStatus] = useState(false);
-
- 
 
   axios.defaults.baseURL = "http://localhost:4001"
   // axios.defaults.baseURL = "https://urban-service-backend-6wmj.onrender.com";
-  const checkLogin = async()=>{
   
-    if(sessionStorage.getItem("isLoggedIn")){
-      await setLoginStatus(true)
-      // console.log("true")
-      // return true 
-    }else{
-      await setLoginStatus(false)
-      // console.log("false")
-      // return false
-    }
-  }
 
-  useEffect(() => {
-    checkLogin();
-  }, [window.location.pathname]);
+  // useEffect(() => {
+  // }, [window.location.pathname]);
   
   return (
     <div className="App">
@@ -55,7 +40,7 @@ function  App() {
           <Route path="/" element={<Login/>}/>
           <Route path="/signup/user/:id" element={<Signup/>}/>
           <Route path="/signup/serviceprovider/:id" element={<ServProSignup/>}/>
-          <Route path="/user" element={sessionStorage.getItem("isLoggedIn") ? <Navbar/> : <CheckLogin/>}>
+          <Route path="/user" element={<Navbar/>}>
             <Route index element={<UserHome/>}></Route>
             <Route path='searchServices' element={<SearchService/>}></Route>
             <Route path='services' element={<Categories/>}></Route>
@@ -66,7 +51,7 @@ function  App() {
             <Route path='checkout' element={<Checkout/>}></Route>
           </Route>  
 
-          <Route path='/serviceprovider' render={()=>setLoginStatus(sessionStorage.getItem("isLoggedIn"))} element={loginStatus ? <Navbar/> : <CheckLogin/>} >
+          <Route path='/serviceprovider' element={<Navbar/>} >
             <Route index element={<ServProHome/>} />
             <Route path='addservice'  element={<AddService/>}></Route>
             <Route path='bookings'  element={<ServProBooking/>}></Route>

@@ -105,3 +105,13 @@ input[type="submit"]{
     border: 2px solid rgb(159, 75, 232);
     box-shadow: 0 0 1px rgb(164, 164, 164);
 }
+
+@media screen and (max-width : 600px){
+    .profileBody{
+        padding: 0 10px;
+    }
+    .formcontainer{
+        padding: 0 10px;
+        overflow-x: auto;
+    }
+}

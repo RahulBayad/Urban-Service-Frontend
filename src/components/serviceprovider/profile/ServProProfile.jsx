@@ -24,7 +24,7 @@ export const ServProProfile = () => {
   const printGender = (genderVal)=>{
     return gender.map((gender)=>{
         if(gender != genderVal){
-            console.log("gender is",gender)
+            // console.log("gender is",gender)
             return (<option value={gender}>{gender}</option>)
         }
     })
@@ -102,7 +102,7 @@ export const ServProProfile = () => {
   const uploadImage = (selectedImg,imgMessage)=>{
       try{
           let fileUrl = selectedImg.files[0];
-          console.log(fileUrl);
+        //   console.log(fileUrl);
           setImgIcon(URL.createObjectURL(selectedImg.files[0])); 
           imgMessage.textContent = "Image Selected";
           
@@ -114,6 +114,7 @@ export const ServProProfile = () => {
   const getServPro = async()=>{
     try {
         let response = await axios.get(`/serviceprovider/serviceprovider/${sessionStorage.getItem('servProEmail')}`)
+        console.log("srv pro daata",response.data.data)
         setServProData(response.data.data);
     } catch (error) {
         console.log("error",error)

@@ -264,3 +264,15 @@
     box-shadow: 0 0 3px rgb(154, 154, 154);
     background-color: rgb(0, 96, 0);
 }
+
+@media screen and (max-width : 600px) {
+
+    .servicesBody{
+        padding: 0px 0px;
+        grid-template-columns: 100px auto ;
+    }
+    .thirdContainer{
+        display: none;
+    }
+    
+}

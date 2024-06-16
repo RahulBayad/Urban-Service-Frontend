@@ -21,7 +21,7 @@ export const MyServices = () => {
 
   const getServices = async()=>{
     try{
-      let serviceResult = await axios.get("/serviceprovider/serviceprovider/"+sessionStorage.getItem("servProEmail"))
+      let serviceResult = await axios.get("/serviceprovider/services/"+sessionStorage.getItem("servProEmail"))
       console.log("result",serviceResult.data.data)
       setServices(serviceResult.data.data)
     }catch (error) {

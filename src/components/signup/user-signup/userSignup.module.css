@@ -19,7 +19,7 @@
 
 .signupBody{
     /* font-family: "Poppins", sans-serif; */
-    height: 100vh;
+    min-height: 100vh;
     margin-top: 0px;
 }
 .navbarSignup{
@@ -42,8 +42,8 @@
     /* margin: 0 auto; */
     border-radius: 10px;
     background-color: white;
-    border: 1px solid black;
-    width: 390px;
+    border: 1px solid rgb(198,198,198);
+    max-width: 390px;
     padding: 0 42px;
     box-sizing: border-box;
     /* text-align: center; */
@@ -150,4 +150,28 @@
 
 .signupFormContainer .input input:focus{
    border: 2px solid rgb(49, 53, 255);
+}
+
+@media screen and (max-width : 600px){
+    
+    .signupBody{
+        
+    }
+
+    .userSignupContainer{
+        /* border: 1px solid red; */
+        padding: 30px 30px;
+        /* padding-top: 68px; */
+        box-sizing: border-box;
+        /* margin: 0 auto; */
+        margin-top: 0px;
+    }
+    .signupFormContainer{
+        margin : 0 auto;
+        box-shadow : none;
+        /* border : none; */
+    }
+    .imgBox{
+        opacity : 0
+    }
 }

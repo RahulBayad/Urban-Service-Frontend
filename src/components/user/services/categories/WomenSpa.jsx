@@ -21,10 +21,10 @@ export const WomenSpa = () => {
             <img src={painRelief} height='280px' width='200px' style={{borderRadius : "10px"}} alt="" />
             <div>Pain Relief</div>
           </Link>
-          <Link to='/user/services/womenSpa/postworkout' className={css.category} id='category'>
+          {/* <Link to='/user/services/womenSpa/postworkout' className={css.category} id='category'>
             <img src={postworkout} height='280px' width='200px' style={{borderRadius : "10px"}} alt="" />
             <div>Post workout</div>
-          </Link>
+          </Link> */}
           <Link to='/user/services/womenSpa/skincare' className={css.category} id='category'>
             <img src={skincareScrub} height='280px' width='200px' style={{borderRadius : "10px"}} alt="" />
             <div>Skin Care Scrubs</div>

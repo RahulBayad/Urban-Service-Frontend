@@ -147,7 +147,7 @@ input[type="submit"]{
 @media screen and ( max-width:1300px ) and
 (min-width:900px){
     .formbody{
-        border: 2px solid red;
+        /* border: 2px solid red; */
         padding: 20px 100px;
         letter-spacing: 0.2px;
     }
@@ -156,21 +156,21 @@ input[type="submit"]{
 @media screen and ( max-width:900px ) and
 (min-width:600px){
     .formbody{
-        border: 2px solid red;
+        /* border: 2px solid red; */
         padding: 20px 60px;
         letter-spacing: 0.2px;
     }  
 }
 @media screen and ( max-width:430px ){
     .formcontainer{
-        border: 2px solid red;
+        /* border: 2px solid red; */
         padding: 20px 20px;
         letter-spacing: 0.2px;
     }  
 }
 @media screen and ( max-width:600px ) {
     .formbody{
-        border: 2px solid red;
+        /* border: 2px solid red; */
         padding: 20px 20px;
         letter-spacing: 0.2px;
     }  

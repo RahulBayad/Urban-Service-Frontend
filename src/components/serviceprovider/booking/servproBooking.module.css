@@ -100,10 +100,9 @@
 .dateAndCancel{
     display: grid;
     height: 40px;
-    grid-template-columns: auto 150px;
+    grid-template-columns: auto 170px;
 }
 .cancelOrder{
-    /* background-color: rgb(245, 245, 245); */
     background-color: rgb(255, 247, 247);
     color: red;
     width: 100px;
@@ -114,12 +113,33 @@
     border: none;
     border-radius: 3px;
     border: 1px solid red;
-    /* box-shadow: 0 0 2px rgb(180, 180, 180); */
+    cursor: pointer;
+    transition: 100ms ease;
+}
+.completeOrder{
+    background-color: rgb(255, 247, 247);
+    color: green;
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    border: none;
+    border-radius: 3px;
+    border: 1px solid green;
     cursor: pointer;
     transition: 100ms ease;
 }
 .cancelOrder:hover{
     font-size: 13px;
+    color: white;
+    background-color: red;
+    box-shadow: 0 0 4px rgb(180, 180, 180);
+}
+.completeOrder:hover{
+    font-size: 13px;
+    color: white;
+    background-color: green;
     box-shadow: 0 0 4px rgb(180, 180, 180);
 }
 
@@ -237,15 +257,6 @@
 @media (max-width:1000px) {
     .bookingBody{
         padding: 20px 0px;
-    }
-    .bookingDetailsBody{
-        padding: 0 10px;
-        overflow-y: auto;
-    }
-    .bookingInfoContainer{
-        display: flex;
-        gap: 5rem;
-        flex-wrap: wrap;
     }
     
 }
