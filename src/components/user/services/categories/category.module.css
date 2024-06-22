@@ -12,10 +12,10 @@
     display: flex;
     gap: 50px;
     overflow-x: auto;
-    height: 350px;
+    height: 320px;
 }
 .categoryContainer::-webkit-scrollbar{
-    height: 7px;
+    height: 0px;
 }
 
 .category{

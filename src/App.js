@@ -21,6 +21,7 @@ import { Cart } from './components/user/Order/Cart.jsx';
 import { Checkout } from './components/user/Order/Checkout.jsx';
 import axios from 'axios';
 import { ServProBooking } from './components/serviceprovider/booking/ServProBooking.jsx';
+import { ForgetPassword } from './components/login/forget-password/ForgetPassword.jsx';
 
 
 
@@ -38,6 +39,7 @@ function  App() {
 
         <Routes>
           <Route path="/" element={<Login/>}/>
+          <Route path="/forgetPassword" element={<ForgetPassword/>}/>
           <Route path="/signup/user/:id" element={<Signup/>}/>
           <Route path="/signup/serviceprovider/:id" element={<ServProSignup/>}/>
           <Route path="/user" element={<Navbar/>}>

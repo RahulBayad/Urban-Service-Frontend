@@ -75,7 +75,6 @@ export const Signup = () => {
               <div className={css.input}>
                   <label htmlFor="password">Password</label>
                   <input type="password" id='password' className={css.forgetPwd} placeholder='' {...register("password")}  />
-                  <Link className={css.forgetPwd}>Forget Password ?</Link>
               </div>
               <div className={css.input}>
                   <input type="submit" value="Signup" />

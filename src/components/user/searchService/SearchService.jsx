@@ -83,10 +83,12 @@ export const SearchService = () => {
     const initializeCart = async () => {
       let cart = await getCart();
       console.log("cart is updated", cart);
-      setServiceCart(cart);
-
-      let amount = await totalCartAmount(cart);
-      setTotalAmount(amount);
+      let user = sessionStorage.getItem("userEmail");
+      if(user){
+        setServiceCart(cart);
+        let amount = await totalCartAmount(cart);
+        setTotalAmount(amount);
+      }
     };
 
     initializeCart();  

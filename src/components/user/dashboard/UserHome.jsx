@@ -59,11 +59,11 @@ export const UserHome = () => {
             <div className='services-container'>
               <h2 style={{paddingLeft:"20px",fontWeight:"500",fontSize:"20px",color:"rgb(91, 91, 91)"}}>What are you looking for</h2>
               <div className="services-list">
-                <Link to="/user/services/salonForWomen" className="service">
+                <Link to="/user/services/salonForWomen/haircare" className="service">
                   <img src={makeoverIcon} height="90px" alt="" />
                   <h4>Womens's Salon</h4>
                 </Link>
-                <Link to="/user/services/salonForMen" className="service">
+                <Link to="/user/services/salonForMen/haircut" className="service">
                   <img src={haircutIcon} height="90px" alt="" />
                   <h4>Mens's Salon </h4>
                 </Link>
@@ -75,7 +75,7 @@ export const UserHome = () => {
                   <img src={cleaningIcon} height="90px" alt="" />
                   <h4>Cleaning</h4>
                 </Link>
-                <Link to='/user/services/electrician' className="service">
+                <Link to='/user/services' className="service">
                   <img src={technicianIcon} height="90px" alt="" />
                   <h4>Electrician,Plumber & Carpenter</h4>
                 </Link>
@@ -90,11 +90,10 @@ export const UserHome = () => {
             </div>
           </div>
           <Carpenter/>
-          <br />
           <Plumber/>
-          <div>
+          {/* <div>
             <h3>NEXT</h3>
-          </div>
+          </div> */}
         </div> 
           
       </div>

@@ -66,29 +66,50 @@ export const Navbar = () => {
     // history.replace('/');
   }
   const cartandSearch = ()=>{
-    if(path.includes('user')){   
+    if(path.includes('user')){
+      let user = sessionStorage.getItem("userEmail")
+      if(user){
         return(
           <span className='search-and-cart'>
-        <span>
-          <input type="search" placeholder='Search Services' id="search" />
-          <label htmlFor="search"  onClick={()=>searchBar()}>
-          <span style={{position:'relative',top:"7px",right:"0px"}} class="material-symbols-outlined" >search</span>
-          </label>
-        </span>
-        <span>
-          <div style={{display:"flex"}}>
-          <Link to='/user/cart'>
-          <span id='cart-icon' className="material-symbols-outlined">shopping_cart</span>
-          </Link>
-          {
-            cartLength > 0 ?
-            <span className='cartLength' >{cartLength}</span>
-            : null
-          }
-          </div>   
-        </span>
-      </span>
+            <span style={{textAlign:"center"}}>
+              <input type="search" placeholder='e.g. haircut' id="search" onKeyUp={(e)=>{
+                if(e.key === 'Enter'){
+                  searchBar()
+                }
+              }}/>
+            </span>
+            <span style={{border:"0px solid red",textAlign:"center"}}>
+              <div style={{display:"flex",justifyContent:"end"}}>
+              <Link to='/user/cart'>
+              <span id='cart-icon' className="material-symbols-outlined">shopping_cart</span>
+              </Link>
+              {
+                cartLength > 0 ?
+                <span className='cartLength' >{cartLength}</span>
+                : null
+              }
+              </div>   
+            </span>
+          </span>
         )
+      }else{
+        return (
+          <span className='search-and-cart'>
+            <span style={{border:"0px solid red",textAlign:"center"}}>
+              <input type="search" placeholder='e.g. haircut, fan repair' id="search" onKeyUp={(e)=>{
+                if(e.key === 'Enter'){
+                  searchBar()
+                }
+              }}/>
+            </span>
+            <span style={{display:"flex",justifyContent:"end"}}>
+              <button className='login-btn'>Login</button>   
+              <button className='signup-btn'>SignUp</button>   
+            </span>
+          </span>
+        )
+      }
+
     }else{
         // console.log("cart icon not allowed here");
     }
@@ -125,58 +146,72 @@ export const Navbar = () => {
 
 
   return (
-    <div className='' style={{overflow:"hidden"}}>
+    <div className='' >
       <div className="bkg-black" id='bkg-black'></div>
-    <div className='navbar-home'>
-      <span className="menu-logo">
-        <span class="material-symbols-outlined" id="menu" onClick={handleOpenSidebar}>menu</span>
-        <span>
-          <Link className='logo' to="#">
-            <img src={urbanServiceLogo1} height="47px" alt="" style={{marginTop:"2px"}}/>
-          </Link>
-        </span>
-      </span>
-      {
-        cartandSearch()
-      }
-    </div>
-    <div className='sidebar' id='sidebar'>
-      <close-icon><span class="material-symbols-outlined" onClick={handleCloseSidebar} style={{float:"right",cursor:"pointer"}}>close</span></close-icon>
-      <br /><br />
-      <div className="side-list">
-        {
-          path.includes("serviceprovider") 
+
+      <div className='navbar-home' style={{width:"100%"}}>
+          <span className="menu-logo">
+            <span class="material-symbols-outlined" id="menu" onClick={handleOpenSidebar}>menu</span>
+            <span className='logo-img'>
+              <Link className='logo' to={path.includes("user") ? "/user" : "#"}>
+                <img src={urbanServiceLogo1} height="38px" alt="<img>" style={{marginTop:"2px"}}/>
+              </Link>
+            </span>
+          </span>
           
-          ? serviceproviderLinks.map((servPro)=>{
-            if(servPro.name == "Logout"){
-              return(
+          {
+            cartandSearch()
+          }
+      </div>
+      
+      <div className='sidebar' id='sidebar'>
+        <close-icon><span class="material-symbols-outlined" onClick={handleCloseSidebar} style={{float:"right",cursor:"pointer"}}>close</span></close-icon>
+        <br /><br />
+        <div className="side-list">
+          {
+            path.includes("serviceprovider") 
+            
+            ? serviceproviderLinks.map((servPro)=>{
+              if(servPro.name == "Logout"){
+                return(
+                  <side-list>
+                  <Link className='link-tag' to={servPro.link} onClick={endSessionOnLogout}>
+                  <span>
+                    <img src={servPro.icon} height={servPro.imgHeight} style={servPro.css} />
+                  </span>
+                  <list-element>{servPro.name}</list-element>
+                  </Link>
+                  </side-list>
+                )
+              }
+              return (
                 <side-list>
-                <Link className='link-tag' to={servPro.link} onClick={endSessionOnLogout}>
+                <Link className='link-tag' to={servPro.link} onClick={handleCloseSidebar}>
                 <span>
                   <img src={servPro.icon} height={servPro.imgHeight} style={servPro.css} />
                 </span>
                 <list-element>{servPro.name}</list-element>
                 </Link>
                 </side-list>
+                
               )
-            }
-            return (
-              <side-list>
-              <Link className='link-tag' to={servPro.link} onClick={handleCloseSidebar}>
-              <span>
-                <img src={servPro.icon} height={servPro.imgHeight} style={servPro.css} />
-              </span>
-              <list-element>{servPro.name}</list-element>
-              </Link>
-              </side-list>
-              
-            )
-          }) :
-          userLinks.map((user)=>{
-            if(user.name == "Logout"){
+            }) :
+            userLinks.map((user)=>{
+              if(user.name == "Logout"){
+                return (
+                  <side-list>
+                  <Link className='link-tag' to={user.link} onClick={endSessionOnLogout}>
+                  <span>
+                    <img src={user.icon} height={user.imgHeight} style={user.css} />
+                  </span>
+                  <list-element>{user.name}</list-element>
+                  </Link>
+                  </side-list>
+                )
+              }
               return (
                 <side-list>
-                <Link className='link-tag' to={user.link} onClick={endSessionOnLogout}>
+                <Link className='link-tag' to={user.link} onClick={handleCloseSidebar}>
                 <span>
                   <img src={user.icon} height={user.imgHeight} style={user.css} />
                 </span>
@@ -184,31 +219,20 @@ export const Navbar = () => {
                 </Link>
                 </side-list>
               )
-            }
-            return (
-              <side-list>
-              <Link className='link-tag' to={user.link} onClick={handleCloseSidebar}>
-              <span>
-                <img src={user.icon} height={user.imgHeight} style={user.css} />
-              </span>
-              <list-element>{user.name}</list-element>
-              </Link>
-              </side-list>
-            )
-          }) 
-          
-        }
+            }) 
+            
+          }
+
+        </div>
+        {/* <div className="log-out">
+          Logout
+        </div> */}
+      </div>
+
+      <div className='searchBody'>
 
       </div>
-      {/* <div className="log-out">
-        Logout
-      </div> */}
-    </div>
-
-    <div className='searchBody'>
-
-    </div>
-    <Outlet/>
+      <Outlet/>
     </div>
     
   )
