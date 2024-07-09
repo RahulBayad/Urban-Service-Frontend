@@ -23,7 +23,7 @@ export const Checkout = () => {
 
   const [serviceCart , setServiceCart] = useState([]) ;
   const [totalAmount , setTotalAmount] = useState(0);
-  const [finalAmount , setFinalAmount] = useState(0);
+  // const [finalAmount , setFinalAmount] = useState(0);
   const [user , setUser] = useState();
   const [userAddress , setUserAddress] = useState();
   const [todaySlot , setTodaySlot] = useState([]);
@@ -158,7 +158,7 @@ export const Checkout = () => {
     let index = userAddress.index;
     let email = sessionStorage.getItem('userEmail');
     for(let key in formData){
-      if(formData[key] == ''){
+      if(formData[key] === ''){
         formData[key] = userAddress[key]
       }
     }
@@ -184,7 +184,7 @@ export const Checkout = () => {
           updatedAmount = updatedAmount + (service.fees*service.qty)
         ))
         await setTotalAmount(updatedAmount)
-        await setFinalAmount(updatedAmount - updatedAmount/10)
+        // await setFinalAmount(updatedAmount - updatedAmount/10)
     };
     initializeCart();
     let getUser = async ()=>{

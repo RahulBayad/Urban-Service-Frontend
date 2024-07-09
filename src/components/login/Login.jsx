@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import React from 'react';
 import css from './login.module.css'
 import urbanServiceLogo from './urbanServiceLogo.png'
-import { Link, redirect, useNavigate} from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
 import imgForLogin from './imgForLoginPage.png';
 import {openRegister , closeRegister} from './loginScripts';
@@ -13,7 +13,7 @@ import axios from 'axios';
 
 export const Login = () => {
   const navigate = useNavigate();
-  const {register,handleSubmit,formState:{errors},reset} = useForm();
+  const {register,handleSubmit} = useForm();
 
   const submitHandler = async(data)=>{
       // navigate('/user')
@@ -23,7 +23,7 @@ export const Login = () => {
         // console.log(data.email);
         toast.warning("Kindly enter your email",{position:"top-center",theme:"colored"})
       }
-      if(data.role == "role"){
+      if(data.role === "role"){
         toast.warning("Kindly select your role",{position:"top-center",theme:"colored"})
       }
       if(!data.password){
@@ -33,8 +33,8 @@ export const Login = () => {
         email:data.email,
         password:data.password
       }
-          if(data.role == "65ce45bddb522781cc3c0c9a"){
-            let userLogin = await axios.post("/user/login",formData)
+          if(data.role === "65ce45bddb522781cc3c0c9a"){
+            await axios.post("/user/login",formData)
             toast.success("Login success",{position:"top-center",theme:"colored"});
             sessionStorage.setItem("userEmail",data.email);
             sessionStorage.setItem("isLoggedIn" , "true");
@@ -43,9 +43,9 @@ export const Login = () => {
               navigate('/')
             },2000)
           }
-          if(data.role == "65ce45cfdb522781cc3c0c9c"){
+          if(data.role === "65ce45cfdb522781cc3c0c9c"){
             
-            let serProLogin = await axios.post("/serviceprovider/login",formData)
+            axios.post("/serviceprovider/login",formData)
             toast.success("Login success",{position:"top-center",theme:"colored"});
             sessionStorage.setItem("servProEmail",data.email);
             sessionStorage.setItem("isLoggedIn" , true);
@@ -136,7 +136,7 @@ export const Login = () => {
                 <div></div>
                 <div className={css.typeBox}>
                   <Link className={css.link} to='/serviceprovider/signup/65ce45cfdb522781cc3c0c9c'>
-                    <div className={css.selectServiceProvider} ><img height='100px' src={serviceProvider} /></div>
+                    <div className={css.selectServiceProvider} ><img height='100px' src={serviceProvider} alt=""/></div>
                     {/* <div ><span class="material-symbols-outlined" >person_apron</span></div> */}
                     <div className={css.serviceProvider}>Service Provider</div>
                   </Link>

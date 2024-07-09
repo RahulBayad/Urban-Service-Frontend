@@ -1,8 +1,8 @@
 import { ToastContainer , toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React, { useEffect, useState } from 'react'
-    import  css from './editProfile.module.css'
-import uploadIcon from './uploadIcon.png';
+import  css from './editProfile.module.css'
+// import uploadIcon from './uploadIcon.png';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,7 @@ const formValidation = require('./editProfileScripts');
 
 export const ServProProfile = () => {
 
-  const [imgIcon , setImgIcon] = useState(uploadIcon);
+//   const [imgIcon , setImgIcon] = useState(uploadIcon);
   const [servProData , setServProData] = useState();
   const {register , handleSubmit} = useForm();
   const navigate = useNavigate();
@@ -60,7 +60,7 @@ export const ServProProfile = () => {
       
       try {
           let reqObj = new FormData();
-          {
+          
               reqObj.append('fname',data.fname)
               reqObj.append('lname',data.lname)
               reqObj.append('dob',data.dob)
@@ -82,7 +82,7 @@ export const ServProProfile = () => {
               reqObj.append('ifsc',data.ifsc)
               reqObj.append('password',data.password)
               reqObj.append("profilePictureUrl",data.profilePictureUrl[0]);
-          }
+          
           const res = await axios.update("/serviceprovider/serviceprovider",reqObj)
           // console.log("res",res.response.data.data);
           console.log("Registration successful",res.data);
@@ -100,9 +100,9 @@ export const ServProProfile = () => {
   
   const uploadImage = (selectedImg,imgMessage)=>{
       try{
-          let fileUrl = selectedImg.files[0];
+        //   let fileUrl = selectedImg.files[0];
         //   console.log(fileUrl);
-          setImgIcon(URL.createObjectURL(selectedImg.files[0])); 
+        //   setImgIcon(URL.createObjectURL(selectedImg.files[0])); 
           imgMessage.textContent = "Image Selected";
           
       }catch(err){
@@ -136,7 +136,7 @@ export const ServProProfile = () => {
               events.preventDefault();
               console.log(events.dataTransfer.files[0]);
               console.log("url is ",URL.createObjectURL(events.dataTransfer.files[0]))
-              setImgIcon(URL.createObjectURL(events.dataTransfer.files[0]))
+            //   setImgIcon(URL.createObjectURL(events.dataTransfer.files[0]))
               imgMessage.textContent = "Image Dropped";
           })
       }

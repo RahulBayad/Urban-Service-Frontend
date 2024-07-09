@@ -19,7 +19,6 @@ export const Navbar = () => {
   const dispatch = useDispatch();
 
   const path = window.location.pathname;
-  const [services , setServices] = useState([]);
   const [cartLength , setCartLength] = useState(0);
   const navigate = useNavigate();
 
@@ -33,11 +32,9 @@ export const Navbar = () => {
     })
     console.log("search is ",search.data.data);
     dispatch(searchServices(search.data.data));
-    setServices(search.data.data);
     navigate('/user/searchServices');
     }catch(err){
       console.log("err in search....",err);
-      setServices([]);
     }
   }
 
@@ -171,7 +168,7 @@ export const Navbar = () => {
                   <side-list>
                   <Link className='link-tag' to={servPro.link} onClick={endSessionOnLogout}>
                   <span>
-                    <img src={servPro.icon} height={servPro.imgHeight} style={servPro.css} />
+                    <img src={servPro.icon} height={servPro.imgHeight} style={servPro.css} alt="" />
                   </span>
                   <list-element>{servPro.name}</list-element>
                   </Link>
@@ -182,7 +179,7 @@ export const Navbar = () => {
                 <side-list>
                 <Link className='link-tag' to={servPro.link} onClick={handleCloseSidebar}>
                 <span>
-                  <img src={servPro.icon} height={servPro.imgHeight} style={servPro.css} />
+                  <img src={servPro.icon} height={servPro.imgHeight} style={servPro.css} alt=""/>
                 </span>
                 <list-element>{servPro.name}</list-element>
                 </Link>
