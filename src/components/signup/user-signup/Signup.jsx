@@ -35,8 +35,11 @@ export const Signup = () => {
 
         const signUp = await axios.post("/user/user",userObj);
         console.log(signUp.data.data);
-        alert("Signup success");
-        navigate("/")
+        toast.success("Account created",{position:"top-right"});
+        // alert("Signup success");
+        setTimeout(()=>{
+          navigate("/login")
+        },1000)
       }catch(err){
         toast.error(err.response.data.message,{
           theme:"colored",
@@ -74,14 +77,18 @@ export const Signup = () => {
               </div>
               <div className={css.input}>
                   <label htmlFor="password">Password</label>
-                  <input type="password" id='password' className={css.forgetPwd} placeholder='' {...register("password")}  />
+                  <input 
+                    type="password" 
+                    id='password' 
+                    placeholder='' {...register("password")}  
+                  />
               </div>
               <div className={css.input}>
                   <input type="submit" value="Signup" />
               </div>
             </form>
             <p style={{textAlign:"center",fontSize:"13px",lineHeight:"15px"}}>OR</p>
-            <div className={css.loginBtn} >Already Registered ? <Link to="/" className={css.loginLink}>Login Here</Link></div>
+            <div className={css.loginBtn} >Already Registered ? <Link to="/login" className={css.loginLink}>Login Here</Link></div>
 
             {/* <Link className={css.registerLink} to="/">Login</Link> */}
             <br /> 

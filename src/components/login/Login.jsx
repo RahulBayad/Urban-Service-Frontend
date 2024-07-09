@@ -34,19 +34,17 @@ export const Login = () => {
         password:data.password
       }
           if(data.role == "65ce45bddb522781cc3c0c9a"){
-            // let userLogin = await axios.post("http://localhost:4001/user/login",formData)
             let userLogin = await axios.post("/user/login",formData)
             toast.success("Login success",{position:"top-center",theme:"colored"});
             sessionStorage.setItem("userEmail",data.email);
             sessionStorage.setItem("isLoggedIn" , "true");
             
             setTimeout(()=>{
-              navigate('/user')
+              navigate('/')
             },2000)
           }
           if(data.role == "65ce45cfdb522781cc3c0c9c"){
             
-            // let serProLogin = await axios.post("http://localhost:4001/serviceprovider/login",formData)
             let serProLogin = await axios.post("/serviceprovider/login",formData)
             toast.success("Login success",{position:"top-center",theme:"colored"});
             sessionStorage.setItem("servProEmail",data.email);
@@ -97,7 +95,7 @@ export const Login = () => {
               <div className={css.input}>
                 <label htmlFor="password">Password</label>
                 <input type="password" id='password' placeholder='' {...register("password")} />
-                <Link className={css.forgetPwd}>Forget Password ?</Link>
+                <Link to="/forgetPassword" className={css.forgetPwd}>Forget Password ?</Link>
               </div>
               <div className={css.input}>
                   <input type="submit" value="Login" />
@@ -128,7 +126,7 @@ export const Login = () => {
             
             <div className={css.selectType}> 
                 <div className={css.typeBox} >
-                <Link className={css.link} to="signup/user/65ce45bddb522781cc3c0c9a">
+                <Link className={css.link} to="/user/signup/65ce45bddb522781cc3c0c9a">
                   <div className={css.selectUser}><img src={user} height='100px' alt="" /></div>
                   {/* <div ><span class="material-symbols-outlined">person</span></div> */}
                   {/* <br /> */}
@@ -137,8 +135,8 @@ export const Login = () => {
                 </div>
                 <div></div>
                 <div className={css.typeBox}>
-                  <Link className={css.link} to='signup/serviceprovider/65ce45cfdb522781cc3c0c9c'>
-                    <div className={css.selectServiceProvider} ><img height='100px' src={serviceProvider} alt="" /></div>
+                  <Link className={css.link} to='/serviceprovider/signup/65ce45cfdb522781cc3c0c9c'>
+                    <div className={css.selectServiceProvider} ><img height='100px' src={serviceProvider} /></div>
                     {/* <div ><span class="material-symbols-outlined" >person_apron</span></div> */}
                     <div className={css.serviceProvider}>Service Provider</div>
                   </Link>

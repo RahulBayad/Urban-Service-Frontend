@@ -130,7 +130,7 @@ export const Checkout = () => {
       let deleteCart = await axios.put(`/user/cart/emptyCart/${user.email}`)
       console.log("cart response is",deleteCart)
       setTimeout(() => {
-        navigate('/user');
+        navigate('/');
       }, 2000);
       
     } catch (error) {

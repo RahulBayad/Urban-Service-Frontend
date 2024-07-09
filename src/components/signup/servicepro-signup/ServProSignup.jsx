@@ -56,7 +56,7 @@ export const ServProSignup = () => {
             console.log("Registration successful",res.data);
             toast.success(`${res.data.data}`,{position:"top-center",theme:'colored'});
             setTimeout(()=>{
-                navigate('/');
+                navigate('/login');
             },3000)
         } catch (error) {
             console.log(error)

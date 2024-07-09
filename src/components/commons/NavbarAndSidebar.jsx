@@ -66,7 +66,7 @@ export const Navbar = () => {
     // history.replace('/');
   }
   const cartandSearch = ()=>{
-    if(path.includes('user')){
+    if(!path.includes('serviceprovider')){
       let user = sessionStorage.getItem("userEmail")
       if(user){
         return(
@@ -103,8 +103,12 @@ export const Navbar = () => {
               }}/>
             </span>
             <span style={{display:"flex",justifyContent:"end"}}>
-              <button className='login-btn'>Login</button>   
-              <button className='signup-btn'>SignUp</button>   
+              <button className='login-btn'>
+                <Link to="/login" style={{textDecoration:"none",color:"inherit"}}>Login</Link>
+              </button>   
+              <button className='signup-btn'>
+                <Link to="/user/signup" style={{textDecoration:"none",color:"inherit"}}>SignUp</Link>
+              </button>   
             </span>
           </span>
         )
@@ -116,7 +120,7 @@ export const Navbar = () => {
   }
 
   useEffect(()=>{
-    if(path.includes('user')){
+    if(!path.includes('serviceprovider')){
       const initializeCart = async () => {
         let cart = await getCart();
         await setCartLength(cart?.length);
@@ -126,11 +130,11 @@ export const Navbar = () => {
   })
 
   const userLinks = [
-    { name :"Home",link : "/user",icon : home , css : {marginBottom :"2px"} , imgHeight : "21px"},
+    { name :"Home",link : "/",icon : home , css : {marginBottom :"2px"} , imgHeight : "21px"},
     { name :"Services",link : "/user/services",icon : servicesIcon , css : {marginBottom :"3px"},imgHeight : "21px"},
     { name :"Bookings",link : "/user/bookings",icon : bookings , css : {marginBottom :"3px"},imgHeight : "21px"},
     { name :"Profile",link : "/user/profile",icon : user , css : {marginTop:"-3px",marginLeft:"-1px"},imgHeight : "26px"},
-    { name :"Logout",link : "/",icon : logout , css : {marginBottom:"2px",marginLeft:"3px"},imgHeight : "21px"}
+    { name :"Logout",link : "/login",icon : logout , css : {marginBottom:"2px",marginLeft:"3px"},imgHeight : "21px"}
   ]
   const serviceproviderLinks = [
     { name :"Dashboard",link : "/serviceprovider",icon : home , css : {marginBottom :"2px"},imgHeight : "21px"},
@@ -138,7 +142,7 @@ export const Navbar = () => {
     { name :"My Services",link : "/serviceprovider/myservices",icon : servicesIcon , css : {marginBottom :"3px"},imgHeight : "21px"},
     { name :"Bookings",link : "/serviceprovider/bookings",icon : bookings , css : {marginBottom :"3px"},imgHeight : "21px"},
     { name :"Profile",link : "/serviceprovider/profile",icon : user , css : {marginTop :"-3px",marginLeft : "-1px"},imgHeight : "26px"},
-    { name :"Logout",link : "/",icon : logout , css : {marginBottom:"2px",marginLeft:"3px"},imgHeight : "21px"}
+    { name :"Logout",link : "/login",icon : logout , css : {marginBottom:"2px",marginLeft:"3px"},imgHeight : "21px"}
   ]
 
   
@@ -153,7 +157,7 @@ export const Navbar = () => {
           <span className="menu-logo">
             <span class="material-symbols-outlined" id="menu" onClick={handleOpenSidebar}>menu</span>
             <span className='logo-img'>
-              <Link className='logo' to={path.includes("user") ? "/user" : "#"}>
+              <Link className='logo' to={path.includes("serviceprovider") ? "/serviceprovider" : "/"}>
                 <img src={urbanServiceLogo1} height="38px" alt="<img>" style={{marginTop:"2px"}}/>
               </Link>
             </span>

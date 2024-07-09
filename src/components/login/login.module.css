@@ -94,10 +94,14 @@
     text-decoration: none;
     text-align: right;
     padding-left: 5px;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    color: rgb(54, 54, 54);   
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: rgb(16, 16, 237);   
+}
+.input .forgetPwd:hover{
+    text-decoration: underline;
+
 }
 .loginFormContainer .input input{
     font-family: 'roboto';

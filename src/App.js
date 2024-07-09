@@ -38,19 +38,19 @@ function  App() {
     <div className="App">
 
         <Routes>
-          <Route path="/" element={<Login/>}/>
+          <Route path="/login" element={<Login/>}/>
           <Route path="/forgetPassword" element={<ForgetPassword/>}/>
-          <Route path="/signup/user/:id" element={<Signup/>}/>
-          <Route path="/signup/serviceprovider/:id" element={<ServProSignup/>}/>
-          <Route path="/user" element={<Navbar/>}>
+          <Route path="/user/signup/:role" element={<Signup/>}/>
+          <Route path="/serviceprovider/signup/:role" element={<ServProSignup/>}/>
+          <Route path="/" element={<Navbar/>}>
             <Route index element={<UserHome/>}></Route>
-            <Route path='searchServices' element={<SearchService/>}></Route>
-            <Route path='services' element={<Categories/>}></Route>
-            <Route path='services/:categories/:type' element={<UserServices/>} ></Route>
-            <Route path='bookings' element={<UserBooking/>}></Route>
-            <Route path='profile' element={<UserProfile/>}></Route>
-            <Route path='cart' element={<Cart/>}></Route>
-            <Route path='checkout' element={<Checkout/>}></Route>
+            <Route path='user/searchServices' element={<SearchService/>}></Route>
+            <Route path='user/services' element={<Categories/>}></Route>
+            <Route path='user/services/:categories/:type' element={<UserServices/>} ></Route>
+            <Route path='user/bookings' element={<UserBooking/>}></Route>
+            <Route path='user/profile' element={<UserProfile/>}></Route>
+            <Route path='user/cart' element={<Cart/>}></Route>
+            <Route path='user/checkout' element={<Checkout/>}></Route>
           </Route>  
 
           <Route path='/serviceprovider' element={<Navbar/>} >
