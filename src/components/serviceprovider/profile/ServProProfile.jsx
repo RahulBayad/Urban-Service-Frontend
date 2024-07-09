@@ -1,8 +1,7 @@
 import { ToastContainer , toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import React, { useEffect, useState } from 'react'
-import urbanServiceLogo from './urbanServiceLogo.png'
-import  css from './editProfile.module.css'
+    import  css from './editProfile.module.css'
 import uploadIcon from './uploadIcon.png';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
@@ -23,7 +22,7 @@ export const ServProProfile = () => {
 
   const printGender = (genderVal)=>{
     return gender.map((gender)=>{
-        if(gender != genderVal){
+        if(gender !== genderVal){
             // console.log("gender is",gender)
             return (<option value={gender}>{gender}</option>)
         }
@@ -31,21 +30,21 @@ export const ServProProfile = () => {
   }
   const printCountry = (countryVal)=>{
     return country.map((country)=>{
-        if(country != countryVal){
+        if(country !== countryVal){
             return (<option value={country}>{country}</option>)
         }
     })
   }
   const printMaritalStatus = (maritalStatusVal)=>{
     return maritalStatus.map((maritalStatus)=>{
-        if(maritalStatus != maritalStatusVal){
+        if(maritalStatus !== maritalStatusVal){
             return (<option value={maritalStatus}>{maritalStatus}</option>)
         }
     })
   }
   const printQualification = (qualificationVal)=>{
     return qualification.map((qualification)=>{
-        if(qualification != qualificationVal){
+        if(qualification !== qualificationVal){
             return (<option value={qualification}>{qualification}</option>)
         }
     })

@@ -1,20 +1,20 @@
 import axios from "axios";
 
 const carpenter = ['bed','cupboard','door','drill','furniture','window' , 'balcony']
-const ac = ['service','repair','installation'];
-const laptop = ['windows','apple','desktop','upgrade'];
-const tv = ['repair','installation','uninstallation'];
-const fridge = ['doubleDoor','singleDoor','sidebyside'];
-const washingmachine = ['repair','installation','uninstallation'];
-const ro = ['service','repair','installation'];
-const oven = ['repair'];
-const geyser = ['repair','servicing','installation'];
-const mensSpa = ['painrelief','stressrelief','postworkout','relaxation'];
-const womensSpa = ['painrelief','stressrelief','postworkout','skincare'];
-const electrician = ['switch','light','mcb','wiring','inverter','fan','doorbell'];
-const plumber = ['bathFitting','drainage','tap','basin','grouting','filterTap','toilet','tank','motor','pipe'];
-const mensSalon = ['haircut','detan','facial','pedicure','haircolor','massage','ayurvedicMassage'];
-const womensSalon = ['package','waxing','facial','manicure','pedicure','threading','detan','haircare'];
+// const ac = ['service','repair','installation'];
+// const laptop = ['windows','apple','desktop','upgrade'];
+// const tv = ['repair','installation','uninstallation'];
+// const fridge = ['doubleDoor','singleDoor','sidebyside'];
+// const washingmachine = ['repair','installation','uninstallation'];
+// const ro = ['service','repair','installation'];
+// const oven = ['repair'];
+// const geyser = ['repair','servicing','installation'];
+// const mensSpa = ['painrelief','stressrelief','postworkout','relaxation'];
+// const womensSpa = ['painrelief','stressrelief','postworkout','skincare'];
+// const electrician = ['switch','light','mcb','wiring','inverter','fan','doorbell'];
+// const plumber = ['bathFitting','drainage','tap','basin','grouting','filterTap','toilet','tank','motor','pipe'];
+// const mensSalon = ['haircut','detan','facial','pedicure','haircolor','massage','ayurvedicMassage'];
+// const womensSalon = ['package','waxing','facial','manicure','pedicure','threading','detan','haircare'];
 
 
 export const ApiHandle =async (category , type)=>{

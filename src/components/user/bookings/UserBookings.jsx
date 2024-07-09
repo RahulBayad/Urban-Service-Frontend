@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import css from './booking.module.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import axios, { all } from 'axios'
+import axios from 'axios'
 import {allOrderBtn,pendingOrderBtn,prevOrderBtn,cancelledOrderBtn} from './bookingScripts'
 
 export const UserBooking = () => {
@@ -19,14 +19,14 @@ export const UserBooking = () => {
   }
   const pendingOrders = async()=>{
     pendingOrderBtn()
-    let filterOrder = totalOrders?.filter((order)=>order.status == "Pending" || "Confirmed")
+    let filterOrder = totalOrders?.filter((order)=>order.status === "Pending" || "Confirmed")
     filterOrder = filterOrder.reverse()
     setOrders(filterOrder);
     // console.log("order in current is",orders);
   }
   const cancelledOrders = async()=>{
     cancelledOrderBtn()
-    let filterOrder = totalOrders?.filter((order)=>order.status == "Cancelled")
+    let filterOrder = totalOrders?.filter((order)=>order.status === "Cancelled")
     filterOrder = filterOrder.reverse()
     setOrders(filterOrder);
     // console.log("order in cancelled is",orders);
@@ -34,7 +34,7 @@ export const UserBooking = () => {
   }
   const previousOrders = async()=>{
     prevOrderBtn()
-    let filterOrder = totalOrders?.filter((order)=>order.status == "Success")
+    let filterOrder = totalOrders?.filter((order)=>order.status === "Success")
     filterOrder = filterOrder.reverse()
     setOrders(filterOrder);
     // console.log("order in prev is",orders);
@@ -127,10 +127,10 @@ export const UserBooking = () => {
                               <div style={{display:"grid",gridTemplateColumns:"auto 80px"}}>
                                 <span className={css.serviceName}>{services.service.name}</span>
                                 {
-                                  order.status == "Success" ? <button className={css.statusSuccess}>{order.status}</button>
-                                  : order.status == "Pending" ?
+                                  order.status === "Success" ? <button className={css.statusSuccess}>{order.status}</button>
+                                  : order.status === "Pending" ?
                                   <button className={css.statusPending}>{order.status}</button>
-                                  : order.status == "Cancelled" ?
+                                  : order.status === "Cancelled" ?
                                   <button className={css.statusCancelled}>{order.status}</button> : 
                                   <button className={css.statusPending}>{order.status}</button>  
                                 }
@@ -246,10 +246,10 @@ export const UserBooking = () => {
                               <div style={{display:"grid",gridTemplateColumns:"auto 80px"}}>
                                 <span className={css.serviceName}>{services.service.name}</span>
                                 {
-                                  orderInfo.status == "Success" ? <button className={css.statusSuccess}>{orderInfo.status}</button>
-                                  : orderInfo.status == "Pending" ?
+                                  orderInfo.status === "Success" ? <button className={css.statusSuccess}>{orderInfo.status}</button>
+                                  : orderInfo.status === "Pending" ?
                                   <button className={css.statusPending}>{orderInfo.status}</button>
-                                  : orderInfo.status == "Cancelled" ?
+                                  : orderInfo.status === "Cancelled" ?
                                   <button className={css.statusCancelled}>{orderInfo.status}</button> : null
                                 }
                               </div>

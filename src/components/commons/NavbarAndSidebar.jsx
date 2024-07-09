@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './navbar.css'
 import { Outlet , Link, useNavigate } from 'react-router-dom'
-// import urbanServiceLogo from './../login/urbanServiceLogo.png';
 import urbanServiceLogo1 from './urbanServiceLogo1.png';
 import home from './icons/home.png'
 import logout from './icons/logout.png'
@@ -50,20 +49,11 @@ export const Navbar = () => {
     document.getElementById("sidebar").style.transform = "translate(0,0)";
     document.getElementById("bkg-black").style.transform = "scaleX(100%)";
   }
-  const [city,setCity] = useState(null);
-  const changeCity = ()=>{
-    let selectCity = document.getElementById('city');
-    let cityVal = selectCity.value;
-    setCity(cityVal);
-  }
-
   
   const endSessionOnLogout = ()=>{
     sessionStorage.removeItem("servProEmail");
     sessionStorage.removeItem("userEmail");
-    // sessionStorage.setItem("isLoggedIn","false");
     sessionStorage.removeItem("isLoggedIn");
-    // history.replace('/');
   }
   const cartandSearch = ()=>{
     if(!path.includes('serviceprovider')){
@@ -176,7 +166,7 @@ export const Navbar = () => {
             path.includes("serviceprovider") 
             
             ? serviceproviderLinks.map((servPro)=>{
-              if(servPro.name == "Logout"){
+              if(servPro.name === "Logout"){
                 return(
                   <side-list>
                   <Link className='link-tag' to={servPro.link} onClick={endSessionOnLogout}>
@@ -201,12 +191,12 @@ export const Navbar = () => {
               )
             }) :
             userLinks.map((user)=>{
-              if(user.name == "Logout"){
+              if(user.name === "Logout"){
                 return (
                   <side-list>
                   <Link className='link-tag' to={user.link} onClick={endSessionOnLogout}>
                   <span>
-                    <img src={user.icon} height={user.imgHeight} style={user.css} />
+                    <img src={user.icon} height={user.imgHeight} style={user.css} alt="" />
                   </span>
                   <list-element>{user.name}</list-element>
                   </Link>
@@ -217,7 +207,7 @@ export const Navbar = () => {
                 <side-list>
                 <Link className='link-tag' to={user.link} onClick={handleCloseSidebar}>
                 <span>
-                  <img src={user.icon} height={user.imgHeight} style={user.css} />
+                  <img src={user.icon} height={user.imgHeight} style={user.css} alt=""/>
                 </span>
                 <list-element>{user.name}</list-element>
                 </Link>
@@ -228,9 +218,6 @@ export const Navbar = () => {
           }
 
         </div>
-        {/* <div className="log-out">
-          Logout
-        </div> */}
       </div>
 
       <div className='searchBody'>

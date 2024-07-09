@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import css from './cart.module.css'
 import axios from 'axios';
-import { getCart ,addToCart } from '../services/ServicesApi';
+import { getCart } from '../services/ServicesApi';
 import { Link } from 'react-router-dom';
 export const Cart = () => {
 
@@ -26,7 +26,7 @@ export const Cart = () => {
           }else{
             console.log("called and qty is",qty) 
             console.log("called and index is",index) 
-            let obj = {index : index}
+            
             let removeFromCart = await axios.delete(`/user/cart/${sessionStorage.getItem('userEmail')}`,{
               data : {
                 index : index
@@ -49,9 +49,9 @@ export const Cart = () => {
   
     const updateCartAmount = async (cart)=>{
       let updatedAmount = 0;
-        cart.map((service)=>{
+        cart.map((service)=>(
           updatedAmount = updatedAmount + (service.fees*service.qty)
-        })
+        ))
         return updatedAmount;
     }
 
@@ -61,9 +61,9 @@ export const Cart = () => {
             console.log("cart is updated", cart);
             setServiceCart(cart);
             let updatedAmount = 0;
-            cart.map((service)=>{
+            cart.map((service)=>(
               updatedAmount = updatedAmount + (service.fees*service.qty)
-            })
+            ))
             setTotalAmount(updatedAmount)
 
         };

@@ -31,7 +31,7 @@ export const SearchService = () => {
         }else{
           console.log("called and qty is",qty) 
           console.log("called and index is",index) 
-          let obj = {index : index}
+          
           let removeFromCart = await axios.delete(`/user/cart/${sessionStorage.getItem('userEmail')}`,{
             data : {
               index : index
@@ -54,9 +54,9 @@ export const SearchService = () => {
 
   const updateCartAmount = async (cart)=>{
     let updatedAmount = 0;
-      cart.map((service)=>{
+      cart.map((service)=>(
         updatedAmount = updatedAmount + (service.fees*service.qty)
-      })
+      ))
       return updatedAmount;
   }
 
@@ -75,9 +75,9 @@ export const SearchService = () => {
   useEffect(()=>{
     const totalCartAmount = async (cart)=>{
       let updatedAmount = 0;
-      cart.map((service)=>{
+      cart.map((service)=>(
         updatedAmount = updatedAmount +  parseInt(service.fees) * parseInt(service.qty) 
-      })
+      ))
       return updatedAmount;
     }
     const initializeCart = async () => {

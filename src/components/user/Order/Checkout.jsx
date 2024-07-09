@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import deleteIcon from './deleteIcon.png'
 import editIcon from './editIcon.png'
 import cardIcon from './cardIcon.png'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { todaySlotFunction , tomorrowSlotFunction,openCard,openUpi,closeAll } from './checkoutScripts';
 
 export const Checkout = () => {
@@ -180,9 +180,9 @@ export const Checkout = () => {
         let cart = await getCart();
         setServiceCart(cart);
         let updatedAmount = 0;
-        cart?.map((service)=>{
+        cart?.map((service)=>(
           updatedAmount = updatedAmount + (service.fees*service.qty)
-        })
+        ))
         await setTotalAmount(updatedAmount)
         await setFinalAmount(updatedAmount - updatedAmount/10)
     };

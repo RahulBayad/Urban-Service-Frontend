@@ -1,5 +1,5 @@
 import './App.css';
-import { Link, Route , Routes, Navigate } from 'react-router-dom';
+import { Route , Routes } from 'react-router-dom';
 import { Login } from './components/login/Login.jsx';
 import { Signup } from './components/signup/user-signup/Signup.jsx';
 import { UserHome } from './components/user/dashboard/UserHome';
@@ -13,8 +13,6 @@ import { MyServices } from './components/serviceprovider/myservices/MyServices';
 import { ServProProfile } from './components/serviceprovider/profile/ServProProfile';
 import { ServProSignup } from './components/signup/servicepro-signup/ServProSignup.jsx';
 import { Categories } from './components/user/services/Categories.jsx';
-import { useEffect, useState } from 'react';
-import { CheckLogin } from './components/validations/CheckLogin.jsx';
 import { Error404 } from './components/validations/Error404.jsx';
 import { SearchService } from './components/user/searchService/SearchService.jsx';
 import { Cart } from './components/user/Order/Cart.jsx';
@@ -27,13 +25,9 @@ import { ForgetPassword } from './components/login/forget-password/ForgetPasswor
 
 function  App() {
 
-  axios.defaults.baseURL = "http://localhost:4001"
-  // axios.defaults.baseURL = "https://urban-service-backend-6wmj.onrender.com";
-  
-
-  // useEffect(() => {
-  // }, [window.location.pathname]);
-  
+  // axios.defaults.baseURL = "http://localhost:4001"
+  axios.defaults.baseURL = "https://urban-service-backend-6wmj.onrender.com";
+    
   return (
     <div className="App">
 

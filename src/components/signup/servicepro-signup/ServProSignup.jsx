@@ -28,7 +28,6 @@ export const ServProSignup = () => {
         
         try {
             let reqObj = new FormData();
-            {
                 reqObj.append('fname',data.fname)
                 reqObj.append('lname',data.lname)
                 reqObj.append('dob',data.dob)
@@ -50,7 +49,7 @@ export const ServProSignup = () => {
                 reqObj.append('ifsc',data.ifsc)
                 reqObj.append('password',data.password)
                 reqObj.append("profilePictureUrl",data.profilePictureUrl[0]);
-            }
+            
             const res = await axios.post("/serviceprovider/serviceprovider",reqObj)
             // console.log("res",res.response.data.data);
             console.log("Registration successful",res.data);

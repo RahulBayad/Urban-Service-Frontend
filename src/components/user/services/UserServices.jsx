@@ -39,7 +39,7 @@ export  const UserServices =  () => {
         }else{
           console.log("called and qty is",qty) 
           console.log("called and index is",index) 
-          let obj = {index : index}
+          
           let removeFromCart = await axios.delete(`/user/cart/${sessionStorage.getItem('userEmail')}`,{
             data : {
               index : index
@@ -63,9 +63,9 @@ export  const UserServices =  () => {
 
   const updateCartAmount = async (cart)=>{
     let updatedAmount = 0;
-      cart.map((service)=>{
+      cart.map((service)=>(
         updatedAmount = updatedAmount + (service.fees*service.qty)
-      })
+      ))
       return updatedAmount;
   }
   const addBtnHandler = async (service)=>{
@@ -128,9 +128,9 @@ export  const UserServices =  () => {
     getTypes();
     const totalCartAmount = async (cart)=>{
       let updatedAmount = 0;
-      cart.map((service)=>{
+      cart.map((service)=>(
         updatedAmount = updatedAmount +  parseInt(service.fees) * parseInt(service.qty) 
-      })
+      ))
       return updatedAmount;
     }
     const initializeCart = async () => {
@@ -148,7 +148,7 @@ export  const UserServices =  () => {
     } catch (error) {
       console.log("error in use effect",error)
     }
-  } , [])
+  } )
   
    if( serviceRoutes.includes(category)){
     return (

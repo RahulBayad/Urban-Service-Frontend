@@ -2,7 +2,7 @@ import React from 'react'
 import css from './category.module.css'
 import { Link } from 'react-router-dom'
 import painRelief from './../../images/Spa for women/painRelief.jpg'
-import postworkout from './../../images/Spa for women/postworkout.jpg'
+// import postworkout from './../../images/Spa for women/postworkout.jpg'
 import skincareScrub from './../../images/Spa for women/skincareScrub.jpg'
 import stressRelief from './../../images/Spa for women/stressRelief.jpg'
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 // import { Outlet } from 'react-router-dom';
 import Slider from "react-slick";
@@ -16,9 +16,6 @@ import technicianIcon from './../images/technicianIcon.png'
 import haircutIcon from './../images/haircutIcon.png'
 import { Carpenter } from '../services/categories/Carpenter';
 import { Plumber } from '../services/categories/Plumber';
-import axios from 'axios';
-
-
 
 export const UserHome = () => {
   var settings = {

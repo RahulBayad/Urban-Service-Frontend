@@ -16,12 +16,12 @@ export const Signup = () => {
   const parts = currentUrl.split('/');
   const urlId = parts[parts.length - 1];
 
-  const {register,handleSubmit,formState:{errors},reset} = useForm();
+  const {register,handleSubmit} = useForm();
 
   const navigate = useNavigate();
   const submitHandler = async(data)=>{
 
-      if(data.phone.length != 10){
+      if(data.phone.length !== 10){
         toast.error("Phone number is not valid ",{theme:"colored",position:"top-center"});
         return null;
       }

@@ -14,7 +14,7 @@ export const UserProfile = () => {
   const {register , handleSubmit} = useForm();
 
   const submitHandler = async (updatedData)=>{
-    if(updatedData.phone.length != 10){return toast.error("Phone number is not valid",{position:"top-center"})}
+    if(updatedData.phone.length !== 10){return toast.error("Phone number is not valid",{position:"top-center"})}
     let arr = ['area','city','country','state','pincode','fname','lname','phone'];
     updatedData.index = 0
     for(let key in updatedData){
@@ -42,15 +42,15 @@ export const UserProfile = () => {
     }
   }
 
-  const getUser = async ()=>{
-    try{
-      let email = sessionStorage.getItem('userEmail');
-      let fetchedUser = await axios.post("http://localhost:4001/user/userByEmail" , {email : email})
-      await setUser(fetchedUser.data.data)
-    }catch(err){
-      console.log("error is ",err)
-    }
-  }
+  // const getUser = async ()=>{
+  //   try{
+  //     let email = sessionStorage.getItem('userEmail');
+  //     let fetchedUser = await axios.post("http://localhost:4001/user/userByEmail" , {email : email})
+  //     await setUser(fetchedUser.data.data)
+  //   }catch(err){
+  //     console.log("error is ",err)
+  //   }
+  // }
 
   useEffect(()=>{
     let getUser1 = async ()=>{
@@ -67,7 +67,7 @@ export const UserProfile = () => {
       }
     }
     getUser1();
-  },[])
+  },[user])
 
   return (
     <div className="body">
@@ -120,9 +120,6 @@ export const UserProfile = () => {
                                     user?.address[0]?.country   
                                     ? country.map((ctry)=>{
                                       if(ctry === user?.address[0]?.country){
-                                        {
-                                          console.log("country is ",ctry);
-                                        }
                                         return (
                                           <option value={user?.address[0].country} selected >{user?.address[0].country}</option>
                                         )

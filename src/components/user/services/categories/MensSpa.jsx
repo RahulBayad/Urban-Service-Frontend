@@ -3,7 +3,7 @@ import css from './category.module.css'
 import { Link } from 'react-router-dom'
 import painRelief from './../../images/Spa for men/mensPainreliefMassage.jpg'
 import postworkout from './../../images/Spa for men/mensPostworkoutMassage.jpg'
-import relaxation from './../../images/Spa for men/mensRelaxationMassage.jpg'
+// import relaxation from './../../images/Spa for men/mensRelaxationMassage.jpg'
 import stressRelief from './../../images/Spa for men/mensStreeReliefMassage.jpg'
 
 
